@@ -1,8 +1,8 @@
 # The Design of a Database-Linked Website for NCEA Level 2
 
-Project Name: **PROJECT NAME HERE**
+Project Name: **Game Development Manager Website**
 
-Project Author: **YOUR NAME HERE**
+Project Author: **James Gerraty**
 
 Assessment Standards: **91892** and **91893**
 
@@ -13,11 +13,11 @@ Assessment Standards: **91892** and **91893**
 
 ### Identified Need or Problem
 
-Replace this text with a clearly stated problem or need that exists that your project will attempt to solve / fulfil.
+It is too hard to manage workflow in Game Development in a small team where each member has specialised roles using existing tooling. Current tools focus on general usage for any end user, which does not translate well to our team. It is too hard to split different tasks into different teams using singular categories and as a result, we find ourselves moving away from such tools, to the detriment of our workflow.
 
 ### End-User Requirements
 
-Replace this text with a description of your typical end-users and their specific needs / expectations / requirements.
+The End-Users are the other people TODO
 
 ### Proposed Solution
 
