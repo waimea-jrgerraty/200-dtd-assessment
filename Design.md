@@ -38,6 +38,7 @@ _Usability_ relates to how _easy an interface is to use_ for the end-users. Inte
     Match between system and the real world - Words, images and concepts should be familiar to the user, and reflect real world experiences, for example, a shopping website will use a trolley icon for your cart as it communicates what its function is without the user having to check it themselves.
     
     User control and freedom - Users need to have control over the interface, they should be able to cancel or undo actions to exit unwanted states.
+    
     Consistency and standards - The UI of an interface should follow the conventions of other similar interfaces, as the user will already be familiar with how to navigate it. For a website, placing menus along the top and/or left of the screen and using standard icons (house for home) is best practice.
     
     Error prevention - Prevent users from making errors when possible, for irreversible actions, make the user confirm what they are doing. For forms, include sanity checks so that information entered follows the correct format and is believable.
