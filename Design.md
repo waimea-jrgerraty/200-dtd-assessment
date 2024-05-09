@@ -86,9 +86,9 @@ I need to gather constructive input from my end users on the various design prot
 
 The _accessibility_ implications of a digital outcome involve ensuring it is _available to_, and can be used by, _all end-users_, regardless of their abilities.
 
-Accessibility implications are relevant to my digital outcome as I myself am visually impaired, and one of our end users suffers from colour blindness
+Accessibility implications are relevant to my digital outcome as I myself am visually impaired, and one of our end users suffers from colour blindness. Type of device doesn't matter as it will only be accessed on desktops or laptops.
 
-I should avoid using colour combinations that are hard to differentiate for our member with colour blindness (should ask them specifically what type of colour blindness they have). I should make use of contrast to make it easier to read for the visually impaired. The main colour theme will likely end up being light or dark greyish-blue, as AMOLED or similar themes are hard to read for me due to my astigmatism causing halation. Dark themes are still usable for me when the background is not completely black.
+I should avoid using colour combinations that are hard to differentiate for our member with colour blindness (should ask them specifically what type of colour blindness they have). I should make use of contrast to make it easier to read for the visually impaired. The main colour theme will likely end up being light or dark greyish-blue, as AMOLED or similar themes are hard to read for me due to my astigmatism causing halation. Dark themes are still usable for me when the background is not completely black. I should make sure the interface works on common laptop aspect ratios, as well as the common 16:9 aspect ratio. 
 
 -------------------------------------------------
 
