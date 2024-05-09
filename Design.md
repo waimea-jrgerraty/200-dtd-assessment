@@ -62,33 +62,33 @@ I need to make sure each part of my digital outcome follows Neilsen's usability 
 
 The _End-User_ implications of a digital outcome are connected to the _specific needs_ of the user. A digital outcome needs to adjust its design and functionality to be as usable as possible for its target audience. This can include targetting language toward the target audiences comprehension level, and making sure your outcome functions on the type(s) of devices most likely to be used by your end users.
 
-End-Users implications are relevant to my digital outcome as it is required to be easier to use for our specific needs within game development compared to competitors like Trello who have more general end user considerations. If the project doesn't meet our specific needs it will be no better than just using Trello.
+End-User implications are relevant to my digital outcome as it is required to be easier to use for our specific needs within game development compared to competitors like Trello who have more general end user considerations. If the project doesn't meet our specific needs it will be no better than just using Trello.
 
-My project aims to cater to our specific needs by giving more separation between different aspects of game development, by organising each aspect into its own super-category. This allows multiple different categories of task to be made inside each super-category which will make managing tasks for each team easier. Additionally, to address potential concerns over communication between teams with this approach, I will include an alert feature, which allows a notification to be made on a task so people on different teams can review it and give their input without needing to organise that through another medium.
+My project aims to cater to our specific needs by giving more separation between different aspects of game development, by organising each aspect into its own super-category. This allows multiple different categories of task to be made inside each super-category which will make managing tasks for each team easier. Additionally, to address potential concerns over communication between teams with this approach, I will include an alert feature, which allows a notification to be made on a task so people on different teams can review it and give their input without needing to organise that through another medium. I also need to consider that one of our team members speaks korean as their first language, so I can cater to their end user needs by including korean translations for the site menus and navigation.
 
-### IMPLICATION NAME HERE
+### Functionality Implications
 
-Replace this text with a clear explanation of what the implication means.
+The _functionality_ implications of a digital outcome relate to how _well it works_ for the end-user, in terms of meeting its intended purpose. A functional outcome will _do everything it is supposed to_ and _meet its purpose_, be _bug free_ and work without headache, and _work as expected_ from the users point of view.
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+Functionality implications are relevant to my digital outcome as the website needs to function for us to use it. If the final product is riddled with bugs that require careful action to work around or doesn't work entirely, then it will not be usable. 
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+When creating my outcome, I need to address everything I initially promised before adding any extra features, to ensure that my outcome is complete and functioning with all the features promised to my end users by the deadline, as otherwise the outcome will fail. I should also take into consideration input validation for the forms themselves, though due to the private nature of the website I should not need to implement many server-sided input validation checks.
 
-### IMPLICATION NAME HERE
+### Aesthetic Implications
 
-Replace this text with a clear explanation of what the implication means.
+The _aesthetic_ implications of a digital outcome relate to _how it looks_ in terms of design. An outcome's design should _be appealing_ to its end-users, _follow conventions_, and make good use of _colour_, _font_, and _positioning_. This implication largely determines the overall user-experience of the outcome and a great deal of thought should be put into it.
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+Aesthetic implications are relevant to my digital outcome as the interface needs to look good otherwise my end users _WILL_ complain. I want to ensure the best experience for my team in order to improve our workflow while developing games, and that means putting thought into the aesthetic implications of my digital outcome.
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+I need to gather constructive input from my end users on the various design prototypes created of my interface to make sure everyone is happy with it. I should seek input on any further design changes or additions later down the line as well.
 
-### IMPLICATION NAME HERE
+### Accessibility implications
 
-Replace this text with a clear explanation of what the implication means.
+The _accessibility_ implications of a digital outcome involve ensuring it is _available to_, and can be used by, _all end-users_, regardless of their abilities.
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+Accessibility implications are relevant to my digital outcome as I myself am visually impaired, and one of our end users suffers from colour blindness
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+I should avoid using colour combinations that are hard to differentiate for our member with colour blindness (should ask them specifically what type of colour blindness they have). I should make use of contrast to make it easier to read for the visually impaired. The main colour theme will likely end up being light or dark greyish-blue, as AMOLED or similar themes are hard to read for me due to my astigmatism causing halation. Dark themes are still usable for me when the background is not completely black.
 
 -------------------------------------------------
 
