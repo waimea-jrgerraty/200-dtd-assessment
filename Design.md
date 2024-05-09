@@ -29,9 +29,9 @@ By organising the website like this, it allows each part of the game development
 
 ## Relevant Implications
 
-### Usability
+### Usability Implications
 
-Usability relates to how easy an interface is to use for the end-users. Interfaces should follow common usability heuristics and make intuitive sense. An interface should be usable to the end user without any help or assistance, and ensure it is quick and simple to use the website for their needs. Neilsen's 10 usability heuristics are the following:
+_Usability_ relates to how _easy an interface is to use_ for the end-users. Interfaces should follow common _usability heuristics_ and make intuitive sense. An interface should be usable to the end user without any help or assistance, and ensure it is quick and simple to use the website for their needs. Neilsen's 10 usability heuristics are the following:
 
     Visibility of system status - Users are informed about what is currently happening. Feedback needs to be given to know the interface is performing an action, through status messages and progress bars.
     
@@ -53,9 +53,17 @@ Usability relates to how easy an interface is to use for the end-users. Interfac
     Help and documentation - Try to create a system that doesn't need documentation, but if needed is easily accessible and easy to understand.
 
 
-Usability is important to my project as it needs to be easier to use for our needs than competing tools such as trello. By creating a specialised site for my end users I hope to create a fast and effective tool that will aid in our workflow and allow us to get more done as a team. If the site is not easy or intuitive to use then it will go unused and any time migrating current tasks over will have been wasted. Because of this I need to ensure that it fits the needs of all our team members and is still quick and simple to use.
+Usability is important to my digital outcome as it needs to be easier to use for our needs than competing tools such as trello. By creating a specialised site for my end users I hope to create a fast and effective tool that will aid in our workflow and allow us to get more done as a team. If the site is not easy or intuitive to use then it will go unused and any time migrating current tasks over will have been wasted. Because of this I need to ensure that it fits the needs of all our team members and is still quick and simple to use.
 
-I need to make sure each part of my project follows Neilsen's usability heuristics. TODO
+I need to make sure each part of my digital outcome follows Neilsen's usability heuristics. The most important heuristics to consider for my team are Flexibility and efficient of use, and user control and freedom. Aesthetics and minimalist design is also quite important to this project as my team would prefer an interface that is very easy to understand and not overwhelming. To do this I will follow pre-existing design conventions to make the interface as familiar as possible, implement an undo for most actions, and keep the website minimal. The only page with lots of information will be the task browser, where tasks will be organised into categories and easy to find.
+
+### End-User Implications
+
+The _End-User_ implications of a digital outcome are connected to the _specific needs_ of the user. A digital outcome needs to adjust its design and functionality to be as usable as possible for its target audience. This can include targetting language toward the target audiences comprehension level, and making sure your outcome functions on the type(s) of devices most likely to be used by your end users.
+
+End-Users implications are relevant to my digital outcome as it is required to be easier to use for our specific needs within game development compared to competitors like Trello who have more general end user considerations. If the project doesn't meet our specific needs it will be no better than just using Trello.
+
+My project aims to cater to our specific needs by giving more separation between different aspects of game development, by organising each aspect into its own super-category. This allows multiple different categories of task to be made inside each super-category which will make managing tasks for each team easier. Additionally, to address potential concerns over communication between teams with this approach, I will include an alert feature, which allows a notification to be made on a task so people on different teams can review it and give their input without needing to organise that through another medium.
 
 ### IMPLICATION NAME HERE
 
@@ -73,6 +81,13 @@ Replace this text with an explanation of why the implication is relevant to this
 
 Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
 
+### IMPLICATION NAME HERE
+
+Replace this text with a clear explanation of what the implication means.
+
+Replace this text with an explanation of why the implication is relevant to this particular project.
+
+Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
 
 -------------------------------------------------
 
