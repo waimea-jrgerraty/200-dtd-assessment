@@ -33,26 +33,16 @@ By organising the website like this, it allows each part of the game development
 
 _Usability_ relates to how _easy an interface is to use_ for the end-users. Interfaces should follow common _usability heuristics_ and make intuitive sense. An interface should be usable to the end user without any help or assistance, and ensure it is quick and simple to use the website for their needs. Neilsen's 10 usability heuristics are the following:
 
-    Visibility of system status - Users are informed about what is currently happening. Feedback needs to be given to know the interface is performing an action, through status messages and progress bars.
-    
-    Match between system and the real world - Words, images and concepts should be familiar to the user, and reflect real world experiences, for example, a shopping website will use a trolley icon for your cart as it communicates what its function is without the user having to check it themselves.
-    
-    User control and freedom - Users need to have control over the interface, they should be able to cancel or undo actions to exit unwanted states.
-    
-    Consistency and standards - The UI of an interface should follow the conventions of other similar interfaces, as the user will already be familiar with how to navigate it. For a website, placing menus along the top and/or left of the screen and using standard icons (house for home) is best practice.
-    
-    Error prevention - Prevent users from making errors when possible, for irreversible actions, make the user confirm what they are doing. For forms, include sanity checks so that information entered follows the correct format and is believable.
-    
-    Recognition rather than recall - Make objects, actions, and options visible and recognisable. Users should not have to remember information from one step to the next.
-   
-    Flexibility and efficiency of use - New users should be able to easily use the interface, but more experienced users should also be able to speed up their workflow, for example, by learning keybindings for actions rather than navigating menus.
-    
-    Aesthetic and minimalist design - Keep the interface as simple as possible, and focus on the current user action. only show necessary information at any point and avoid overwhelming the user with pointless information.
-    
-    Help users recognize, diagnose, and recover from errors - Error messages should be plain and helpful, ideally suggesting a solution to the problem as well.
-    
-    Help and documentation - Try to create a system that doesn't need documentation, but if needed is easily accessible and easy to understand.
-
+1. Visibility of system status - Users are informed about what is currently happening. Feedback needs to be given to know the interface is performing an action, through status messages and progress bars.
+2. Match between system and the real world - Words, images and concepts should be familiar to the user, and reflect real world experiences, for example, a shopping website will use a trolley icon for your cart as it communicates what its function is without the user having to check it themselves.   
+3. User control and freedom - Users need to have control over the interface, they should be able to cancel or undo actions to exit unwanted states.   
+4. Consistency and standards - The UI of an interface should follow the conventions of other similar interfaces, as the user will already be familiar with how to navigate it. For a website, placing menus along the top and/or left of the screen and using standard icons (house for home) is best practice.  
+5. Error prevention - Prevent users from making errors when possible, for irreversible actions, make the user confirm what they are doing. For forms, include sanity checks so that information entered follows the correct format and is believable.   
+6. Recognition rather than recall - Make objects, actions, and options visible and recognisable. Users should not have to remember information from one step to the next.  
+7. Flexibility and efficiency of use - New users should be able to easily use the interface, but more experienced users should also be able to speed up their workflow, for example, by learning keybindings for actions rather than navigating menus.  
+8. Aesthetic and minimalist design - Keep the interface as simple as possible, and focus on the current user action. only show necessary information at any point and avoid overwhelming the user with pointless information.  
+9. Help users recognize, diagnose, and recover from errors - Error messages should be plain and helpful, ideally suggesting a solution to the problem as well. 
+10. Help and documentation - Try to create a system that doesn't need documentation, but if needed is easily accessible and easy to understand.
 
 Usability is important to my digital outcome as it needs to be easier to use for our needs than competing tools such as trello. By creating a specialised site for my end users I hope to create a fast and effective tool that will aid in our workflow and allow us to get more done as a team. If the site is not easy or intuitive to use then it will go unused and any time migrating current tasks over will have been wasted. Because of this I need to ensure that it fits the needs of all our team members and is still quick and simple to use.
 
