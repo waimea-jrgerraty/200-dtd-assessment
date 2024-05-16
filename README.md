@@ -1,3 +1,3 @@
 # My Project
 
-## [Design](Design.md)
+## [Design](docs/Design.mdDesign.md)
