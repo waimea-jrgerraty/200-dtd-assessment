@@ -35,6 +35,50 @@ I have made some changes to the database by adding the order keys to tasks as th
 Have gotten my [wireframe](https://www.figma.com/proto/pfaXQRa3RBhN2Mvv3dRuT0/Game-Development-Manager---v0.0.1?node-id=1-2&t=Gp4fkgIBN0A21vR9-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2) into a state where I would like feedback on it before trying to get it too detailed, so I will show the prototype to my end users. I need to get some options for the colour theme that satisfies everyone's needs, especially for my end user with colour blindness.  
 The subtask menu is still a work in progress.
 
+**I had a conversation with two of my end users tonight after showing them the wireframe so far**  
+### Feature suggestions:  
+> Check list subtasks? - voxsinity  
+
+> id maybe say one could have an embedded video but idk up to you - voxsinity
+
+Videos are not something I want to add right now due to it being quite hard to store in a database  
+
+> maybe you have an option to highlight more important things
+> like words - voxsinity
+
+I will try to support markdown or richtext for text fields  
+
+> also do you need the ability to drag to reorder subtasks? - me  
+> I do like the ability to reorder tasks  
+> gives me more freedom  
+> it would be very helpful - voxsinity  
+
+> also do you want subtasks to be draggable to reorder them? - me  
+> yessir - InconspicuousBotGuy
+
+### Color palette suggestions:
+> imo I'd do a uh  
+> Blue of some sort - voxsinity (for the main accent color)  
+
+> wait also what colors are hard to tell apart for you  
+> i have to consider stuff like that - me    
+> I'm mainly red green colorblind  
+> but also i struggle with blue and purple  
+> I can't see purple really except for some strict shades  
+> idk what those shades are don't ask - voxsinity  
+
+> so if i have just blue and some red there it shouldnt be confusing? - me  
+> no  
+> I'll be able to tell them apart  
+> just as long as they aren't mangled together - voxsinity  
+
+> i will probably replace the green with the blue for consistency - me  
+> that would help - voxsinity  
+
+> i find blue/orange accentuates these types of formats really well - InconspicuousBotGuy  
+
+From this I have decided I will be using blue as a primary accent, replacing the green with said blue, and possibly using a more orange red and finding somewhere else to use orange as a secondary accent. I will also be updating the schema to include the order member to subtasks. I will not be adding videos. I will experiment with storing check list subtasks (maybe I can serialize it to store a variable number of checklist tasks within a subtask without further complicating the database)
+
 ### DATE HERE
 
 Replace this test with what you are working on
