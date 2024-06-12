@@ -87,11 +87,13 @@ I decided to scrap the orange accent for now as im not really sure where it fits
 
 I have bumped the version of my design to [v0.1.0](https://www.figma.com/design/HRjsMHtE3CrJ7whYkcAjqt/Game-Development-Manager---v0.1.0?node-id=0-1&t=mmCcCb4Uu9uTRTPN-1)
 
-### DATE HERE
+### 12/06/24
 
-Replace this test with what you are working on
+When asking my team members about the colours:
+> bring down font size of percentages just a hair so they can be easier to see? - InconspicuousBotGuy
 
-Replace this text with brief notes describing what you worked on, any decisions you made, any changes to designs, etc. Add screenshots / links to other media to illustrate your notes where necessary.
+I'm using the actual figma version history feature so if a previous version needs to be accessed do so on the v0.1.0 file by going to File/Show version history
+I lowered the font size of the completion percentage on cards from 16 to 12 in v0.1.1, making it easier to read when its at '100%'
 
 ### DATE HERE
 
