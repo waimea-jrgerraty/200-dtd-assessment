@@ -1,12 +1,18 @@
 <?php
 require_once 'components/utils.php';
 include_once 'partials/header.php';
-include_once 'partials/dragAndDrop.php';
+include_once 'partials/dnd.php';
 ?>
 
-<!-- Drag and drop test -->
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <img src="img_w3slogo.gif" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+<div class="SideNav">
+
 </div>
 
-<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="container">
+      <div draggable="true" class="box">A</div>
+      <div draggable="true" class="box">B</div>
+      <div draggable="true" class="box">C</div>
+  </div>
+
+</main>
+</body>
