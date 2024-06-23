@@ -1,3 +1,16 @@
+:root {
+    --bg-darker: #211E24;
+    --bg-main: #393141;
+    --bg-lighter: #504858;
+
+    --light-main: #E9E2EF;
+    --light-sub: #B5AEBB;
+
+    --accent: #3974CE;
+
+    --pico-background-color: var(--bg-main) !important;
+}
+
 .container {
     color: black;
     display: grid;
@@ -21,12 +34,35 @@
     user-select: none;
 }
 
+header {
+    max-width: 100% !important;
+    max-height: 5% !important;
+    height: 5% !important;
+    background-color: var(--accent);
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    outline: 2px solid var(--light-sub);
+}
+
+nav {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+main {
+    width: 85% !important;
+    max-width: 85% !important;
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
 .SideNav {
-    height: 90%;
-    width: 20%;
+    height: 100%;
+    width: 15%;
     position: fixed;
+    z-index: -1;
     top: 0;
     left: 0;
-    background-color: #111;
-    margin-top: 10%;
+    background-color: var(--bg-lighter);
+    overflow-x: 0;
 }
