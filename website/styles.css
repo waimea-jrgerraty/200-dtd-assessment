@@ -66,3 +66,10 @@ main {
     background-color: var(--bg-lighter);
     overflow-x: 0;
 }
+
+.SideNav #content {
+    margin-top: 8vh;
+    width: 100%;
+    height: 100%;
+    background-color: #211E24;
+}

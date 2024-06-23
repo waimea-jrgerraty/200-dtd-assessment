@@ -1,11 +1,13 @@
 <?php
-require_once 'components/utils.php';
-include_once 'partials/header.php';
-include_once 'partials/dnd.php';
+  require_once 'components/utils.php';
+  include_once 'partials/header.php';
+  include_once 'partials/dnd.php';
 ?>
 
 <div class="SideNav">
+  <div id="content">
 
+  </div>
 </div>
 
 <div class="container">
