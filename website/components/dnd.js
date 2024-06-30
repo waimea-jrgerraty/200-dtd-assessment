@@ -1,9 +1,16 @@
 document.addEventListener('DOMContentLoaded', (event) => {
 
     var dragSrcEl = null;
+    var dragClass = null;
     
     function handleDragStart(e) {
       this.style.opacity = '0.4';
+
+      if (this.classList.contains('.box')) {
+        dragClass = '.box';
+      } else if (this.classList.contains('.sCategory')) {
+        dragClass = '.sCategory';
+      }
       
       dragSrcEl = this;
   
@@ -12,6 +19,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   
     function handleDragOver(e) {
+      if (!(dragClass & this.classList.contains(dragClass))) {
+       return false; 
+      }
+
       if (e.preventDefault) {
         e.preventDefault();
       }
@@ -19,6 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       e.dataTransfer.dropEffect = 'move';
       
       return false;
+      
     }
   
     function handleDragEnter(e) {

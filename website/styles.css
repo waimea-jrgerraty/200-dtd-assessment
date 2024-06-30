@@ -30,7 +30,7 @@
 }
   
 .box.over {
-    border: 3px dotted #666;
+    border: 3px dotted #666 !important;
 }
   
 [draggable] {
@@ -63,7 +63,7 @@ main {
     height: 100%;
     width: 15%;
     position: fixed;
-    z-index: -1;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: var(--bg-lighter);
@@ -131,4 +131,9 @@ main {
     line-height: normal;
     text-align: left;
     padding: 0 0.5rem;
+    z-index: 2;
+}
+
+.sCategory:hover {
+    outline: 2px dotted var(--light-main);
 }

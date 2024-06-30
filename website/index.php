@@ -27,7 +27,10 @@ catch (PDOException $e) {
     <?php
       foreach($sCategories as $sCategory) {
         if ($sCategory["name"] != "archived") {
-          echo "<button type='button' value='{$sCategory['id']}'' class='sCategory'>{$sCategory['name']}</button>";
+          echo 
+          "<div class ='sCategory' draggable='true'>
+            {$sCategory['name']}
+          </div>";
         }
       }
     ?>
