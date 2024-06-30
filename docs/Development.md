@@ -119,8 +119,16 @@ The form interface is built for adding subtasks however other create buttons lin
 I will ask my end users for feedback however these changes will affect the final product and likely wont be reflected in the wireframe. I will still include any comments made by them in the development log and document what I changed based on that.  
 ![Form displaying over other overlays](images/v1.0.0%20form.png)
 
+### 27/06/24
+
+I have been working on the website for the past couple weeks.
+![Website start](images/webV1.png)
+
+So far I have it listing the supercategories fine, and am currently working on the js. Those white rectangles in the main section are test drag and drop elements, and work, though I am currently working on expanding the drag and drop functionality to be able to drag around all types of thing seperatly, so that you cannot drop a supercategory into a category or anything. I have also decided to load the categories and such I will be using AJAX queries to give the website a dynamic feel. This differs from my initial idea of using iframes for everything but does the same thing. A lot of the time has gone into trying to get things to look at least usable, and currently there are issues with the sidebar on different aspect ratios, but right now that isnt too much of a concern since this is targeted mainly at 16:9 with some support for laptop resolutions.
+
 ### DATE HERE
 
 Replace this text with what you are working on
 
 Replace this text with brief notes describing what you worked on, any decisions you made, any changes to designs, etc. Add screenshots / links to other media to illustrate your notes where necessary.
+

@@ -49,6 +49,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         item.classList.remove('over');
       });
     }
+
+    function handleDragEndSC(e) {
+      this.style.opacity = '1';
+      
+      itemsSC.forEach(function (item) {
+        item.classList.remove('over');
+      });
+    }
     
     
     let items = document.querySelectorAll('.container .box');
@@ -59,5 +67,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
       item.addEventListener('dragleave', handleDragLeave, false);
       item.addEventListener('drop', handleDrop, false);
       item.addEventListener('dragend', handleDragEnd, false);
+    });
+
+    let itemsSC = document.querySelectorAll('.sCategory');
+    itemsSC.forEach(function(item) {
+      item.addEventListener('dragstart', handleDragStart, false);
+      item.addEventListener('dragenter', handleDragEnter, false);
+      item.addEventListener('dragover', handleDragOver, false);
+      item.addEventListener('dragleave', handleDragLeave, false);
+      item.addEventListener('drop', handleDrop, false);
+      item.addEventListener('dragend', handleDragEndSC, false);
     });
   });

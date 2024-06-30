@@ -8,7 +8,9 @@
 
     --accent: #3974CE;
 
+    --pico-color: var(--light-main) !important;
     --pico-background-color: var(--bg-main) !important;
+    --pico-font-family: "Fira-Mono", monospace !important;
 }
 
 .container {
@@ -16,6 +18,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
+    padding: 0 1rem;
 }
   
 .box {
@@ -68,8 +71,64 @@ main {
 }
 
 .SideNav #content {
-    margin-top: 8vh;
+    margin-top: 9vh;
     width: 100%;
     height: 100%;
-    background-color: #211E24;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.SideNav #content #header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+    height: 2rem;
+    background-color: var(--bg-darker);
+    border-radius: 1rem;
+    line-height: normal;
+}
+
+.SideNav #content #header h3 {
+    font-size: 1rem;
+    display: block;
+    width: 70%;
+    line-height: 1rem;
+    padding: 0;
+    margin: auto;
+    text-align: left;
+    overflow: scroll;
+    color: var(--light-main);
+}
+
+.SideNav #content #header button {
+    display: block;
+    height: 100%;
+    aspect-ratio: 1 !important;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: bolder;
+    line-height: 1rem;
+    background-color: var(--bg-darker);
+    border-radius: 100%;
+    text-align: center;
+    box-shadow: none;
+    stroke: none;
+    border: 0.2rem solid var(--bg-lighter);
+    margin: 0;
+}
+
+.sCategory {
+    display: block;
+    width: 90%;
+    height: 2rem;
+    background-color: var(--bg-darker);
+    border-radius: 0.5rem;
+    border: none;
+    line-height: normal;
+    text-align: left;
+    padding: 0 0.5rem;
 }
