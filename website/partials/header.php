@@ -15,7 +15,7 @@
     <header>
         <nav>
             <ul>
-                <li><strong>Game Development Task Manager</strong></li>
+                <li class="centeredHeader"><strong>Game Development Task Manager</strong></li>
             </ul>
             <ul>
                 <li><a href="">Alerts</a></li>
