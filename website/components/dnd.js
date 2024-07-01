@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function handleDragStart(e) {
       this.style.opacity = '0.4';
 
-      if (this.classList.contains('.box')) {
-        dragClass = '.box';
-      } else if (this.classList.contains('.sCategory')) {
-        dragClass = '.sCategory';
+      if (this.classList.contains('box')) {
+        dragClass = 'box';
+      } else if (this.classList.contains('sCategory')) {
+        dragClass = 'sCategory';
       }
       
       dragSrcEl = this;
@@ -19,38 +19,39 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   
     function handleDragOver(e) {
-      if (!(dragClass & this.classList.contains(dragClass))) {
-       return false; 
-      }
-
-      if (e.preventDefault) {
-        e.preventDefault();
-      }
-  
-      e.dataTransfer.dropEffect = 'move';
-      
+      if ((dragClass && this.classList.contains(dragClass))) {
+        if (e.preventDefault) {
+          e.preventDefault();
+        }
+    
+        e.dataTransfer.dropEffect = 'move';
+        }
       return false;
-      
     }
   
     function handleDragEnter(e) {
-      this.classList.add('over');
+      if ((dragClass && this.classList.contains(dragClass))) {
+        this.classList.add('over');
+      }
     }
   
     function handleDragLeave(e) {
-      this.classList.remove('over');
+      if (this.classList.contains('over')) {
+        this.classList.remove('over');
+      }
     }
   
     function handleDrop(e) {
-      if (e.stopPropagation) {
-        e.stopPropagation(); // stops the browser from redirecting.
+      if ((dragClass && this.classList.contains(dragClass))) {
+        if (e.stopPropagation) {
+          e.stopPropagation(); // stops the browser from redirecting.
+        }
+        
+        if (dragSrcEl != this) {
+          dragSrcEl.innerHTML = this.innerHTML;
+          this.innerHTML = e.dataTransfer.getData('text/html');
+        }
       }
-      
-      if (dragSrcEl != this) {
-        dragSrcEl.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData('text/html');
-      }
-      
       return false;
     }
   
