@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
           dragSrcEl.innerHTML = this.innerHTML;
           this.innerHTML = e.dataTransfer.getData('text/html');
           // need to find a way to get the data-id attribute to switch
-          console.log(e.dataTransfer.getData('text/plain'));
+          const attributeValue = e.dataTransfer.getData('text/html').match(/<div class="drag-data-id" data-id="([^"]+)">/)[1];
+          console.log(e.dataTransfer.getData('text/html'));
         }
 
         // reorder the elements in the database so that they are in the same order when the page reloads.
