@@ -50,6 +50,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (dragSrcEl != this) {
           dragSrcEl.innerHTML = this.innerHTML;
           this.innerHTML = e.dataTransfer.getData('text/html');
+          // need to find a way to get the data-id attribute to switch
+          console.log(e.dataTransfer.getData('text/plain'));
+        }
+
+        // reorder the elements in the database so that they are in the same order when the page reloads.
+        return false;
+        if (dragClass == "sCategory") {
+          let sCategories = document.querySelectorAll('.sCategory');
+
+          for (let i = 0; i < sCategories.length; i++) {
+            console.log(sCategories[i].innerHTML, sCategories[i].getAttribute("data-id"), i+1);
+            // If I could be bothered I would have a single xhttp for drag and drop but this is way easier. 
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("POST","./ServerFunctions.php")
+            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // debug output from request
+            xhttp.onload = function () {
+              console.log(this.responseText);
+            }
+            xhttp.send(`type=sCategoryReorder&id=${sCategories[i].getAttribute("data-id")}&order=${i+1}`);
+          }
         }
       }
       return false;
