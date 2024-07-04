@@ -126,6 +126,12 @@ I have been working on the website for the past couple weeks.
 
 So far I have it listing the supercategories fine, and am currently working on the js. Those white rectangles in the main section are test drag and drop elements, and work, though I am currently working on expanding the drag and drop functionality to be able to drag around all types of thing seperatly, so that you cannot drop a supercategory into a category or anything. I have also decided to load the categories and such I will be using AJAX queries to give the website a dynamic feel. This differs from my initial idea of using iframes for everything but does the same thing. A lot of the time has gone into trying to get things to look at least usable, and currently there are issues with the sidebar on different aspect ratios, but right now that isnt too much of a concern since this is targeted mainly at 16:9 with some support for laptop resolutions.
 
+### 2/07/24
+
+I have finished the type limits for the drag and drop functionality, so you can no longer drop a supercategory into a category or anything crazy like that. Im working on the form modals to create new supercategories, categories, tasks and subtasks.
+
+Once I get the supercategory creation working, I will work on making the drag and drop update the database.
+
 ### DATE HERE
 
 Replace this text with what you are working on
