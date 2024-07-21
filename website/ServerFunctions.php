@@ -3,7 +3,7 @@ require_once 'components/utils.php';
 $db = connectToDB();
 $type = $_POST['type'];
 switch ($type) {
-    case "sCategory":
+    case "sCategory": // Add new supercategory
          // find the max priority from the database
         $get = "SELECT COUNT(`id`) AS `len` FROM `supercategory`";
         try {
@@ -27,8 +27,6 @@ switch ($type) {
         }
         break;
     case "sCategoryReorder":
-        print_r($_POST);
-        die("test");
         $upd = "UPDATE `supercategory` SET `order` = ? WHERE `id` = ?";
 
         try {

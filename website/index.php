@@ -55,7 +55,8 @@ try {
             echo
             "<div class ='sCategory' draggable='true' data-id='{$sCategory['id']}'>
                 {$sCategory['name']}
-              </div>";
+                <button type='button'>X</button>
+            </div>";
           }
         }
         ?>
