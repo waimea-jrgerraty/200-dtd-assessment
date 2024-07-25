@@ -116,6 +116,7 @@ try {
       foreach ($categories as $cat) {
         echo "<div draggable='true' class='category'>
           {$cat['name']}
+          <button type='button'>X</button>
         </div>";
       }
       // Make the new category button
