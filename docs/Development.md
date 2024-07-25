@@ -132,9 +132,14 @@ I have finished the type limits for the drag and drop functionality, so you can 
 
 Once I get the supercategory creation working, I will work on making the drag and drop update the database.
 
+### 25/07/24
+
+You can now create and remove supercategories.
+
+The form to create a new supercategory has not been given proper styling yet and I will have to add that later. Removing a supercategory will bring up a broswer confirmation window to make sure you do not remove a supercategory on accident.
+
 ### DATE HERE
 
 Replace this text with what you are working on
 
 Replace this text with brief notes describing what you worked on, any decisions you made, any changes to designs, etc. Add screenshots / links to other media to illustrate your notes where necessary.
-

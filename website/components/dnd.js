@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     
     
-    let items = document.querySelectorAll('.container .box');
+    let items = document.querySelectorAll('.category');
     items.forEach(function(item) {
       item.addEventListener('dragstart', handleDragStart, false);
       item.addEventListener('dragenter', handleDragEnter, false);
@@ -115,8 +115,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
       // Delete button logic here
       const button = item.querySelector('button');
+      var ClickedDelete = false;
       button.onclick = function () {
         // Ask for confirmation
+        ClickedDelete = true;
         if (window.confirm("Are you sure you want to delete this supercategory?")) {
           const id = button.parentNode.getAttribute('data-id');
           // Send delete action
@@ -124,9 +126,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
           xhttp.open("POST","./ServerFunctions.php")
           xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
+          xhttp.onload = function () {
+            // If we are on the thing we deleted then reset the url
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentId = urlParams.get('id');
+            if (currentId == id) {
+              window.location.replace('index.php');
+            }
+          }
+
           xhttp.send(`type=sCategoryRemove&id=${id}`);
           item.remove(); //csp
         }
       }
+
+      // Load the supercategory when you click the button
+      item.addEventListener('click', function () {
+        if (ClickedDelete == false) {
+          const id = item.getAttribute('data-id');
+          window.location.replace(`index.php?id=${id}`);
+        } 
+        ClickedDelete = false;
+      });
     });
   });
