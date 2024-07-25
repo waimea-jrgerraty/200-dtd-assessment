@@ -10,20 +10,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         dragClass = 'box';
       } else if (this.classList.contains('sCategory')) {
         dragClass = 'sCategory';
-        // Delete button logic here
-        const button = this.querySelector('button');
-        button.onclick = function () {
-          // Ask for confirmation
-          if (window.confirm("Are you sure you want to delete this supercategory?")) {
-            const id = button.parentNode.getAttribute('data-id');
-            // Send delete action
-            const xhttp = new XMLHttpRequest();
-            xhttp.open("POST","./ServerFunctions.php")
-            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            
-            xhttp.send(`type=sCategoryRemove&id=${id}`);
-          }
-        }
       }
       
       dragSrcEl = this;
@@ -126,5 +112,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
       item.addEventListener('dragleave', handleDragLeave, false);
       item.addEventListener('drop', handleDrop, false);
       item.addEventListener('dragend', handleDragEndSC, false);
+
+      // Delete button logic here
+      const button = item.querySelector('button');
+      button.onclick = function () {
+        // Ask for confirmation
+        if (window.confirm("Are you sure you want to delete this supercategory?")) {
+          const id = button.parentNode.getAttribute('data-id');
+          // Send delete action
+          const xhttp = new XMLHttpRequest();
+          xhttp.open("POST","./ServerFunctions.php")
+          xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+          xhttp.send(`type=sCategoryRemove&id=${id}`);
+          item.remove(); //csp
+        }
+      }
     });
   });

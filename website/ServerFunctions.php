@@ -38,7 +38,19 @@ switch ($type) {
             die('There was an error updating data from the database');
         }
 
-        print("Update Success");
+        break;
+    case "sCategoryRemove":
+        $rem = "DELETE FROM `supercategory` WHERE `id` = ?";
+
+        try {
+            $stmt = $db->prepare($rem);
+            $stmt->execute([$_POST['id']]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error removing data from the database');
+        }
+
         break;
 }
 
