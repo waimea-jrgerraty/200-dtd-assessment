@@ -109,15 +109,42 @@ try {
       </div>
     </div>
 
+    <div class="formModal" id="taskForm">
+      <div class="formContent">
+        <h3>New Category</h3>
+        <form method="POST" action="ServerFunctions.php">
+          <input name="type" type="hidden" value="category">
+          <input name="supercategory" type="hidden" value="<?php echo $catID?>">
+
+          <label>Name</label>
+          <input name="name" type="text" required>
+
+          <label>Description</label>
+          <textarea class="notebox" name="description" type="text" required>
+
+          <button id="Ccancel" type="reset">Cancel</button>
+          <button id="Csubmit" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
     <!-- Main page content -->
     <div class="container">
       <?php
       // Load the categories under the current category from the url
       foreach ($categories as $cat) {
-        echo "<div draggable='true' class='category'>
-          {$cat['name']}
-          <button type='button'>X</button>
-        </div>";
+        echo "<div draggable='true' class='category' data-id='{$cat['id']}'>
+          <div id='header'>
+            <h3>{$cat['name']}</h3>
+            <button type='button'>-</button>
+          </div>";
+        // Load the tasks
+
+        // New task button
+        if ($catID != 1) {
+          echo '<button type="button" id="newTask">+</button>';
+        }
+        echo"</div>";
       }
       // Make the new category button
       if ($catID != 1) {
@@ -125,9 +152,6 @@ try {
       }
       
       ?>
-      <!-- <div draggable="true" class="category">A</div>
-      <div draggable="true" class="category">B</div>
-      <div draggable="true" class="category">C</div> -->
     </div>
 
   </main>

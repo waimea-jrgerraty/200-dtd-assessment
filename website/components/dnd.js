@@ -102,6 +102,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
       item.addEventListener('dragleave', handleDragLeave, false);
       item.addEventListener('drop', handleDrop, false);
       item.addEventListener('dragend', handleDragEnd, false);
+
+      // Delete button logic here
+      const button = item.querySelector('#header button');
+      var ClickedDelete = false;
+      button.onclick = function () {
+        // Ask for confirmation
+        ClickedDelete = true;
+        if (window.confirm("Are you sure you want to delete this category?")) {
+          const id = button.parentNode.parentNode.getAttribute('data-id');
+          // Send delete action
+          const xhttp = new XMLHttpRequest();
+          xhttp.open("POST","./ServerFunctions.php")
+          xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+          xhttp.send(`type=categoryRemove&id=${id}`);
+          item.remove(); //csp
+        }
+      }
     });
 
     let itemsSC = document.querySelectorAll('.sCategory');

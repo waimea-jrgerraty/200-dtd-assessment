@@ -27,32 +27,6 @@ switch ($type) {
             die('There was an error adding a new supercategory');
         }
         break;
-    case "category": // Add new category
-        // find the max priority from the database
-        $sCategory = $_POST["supercategory"];
-        $get = "SELECT COUNT(`id`) AS `len` FROM `category` WHERE `supercategory` = ?";
-        try {
-            $stmt = $db->prepare($get);
-            $stmt->execute([$sCategory]);
-            $len = $stmt->fetch()['len'];
-        }
-        catch (PDOException $e) {
-            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
-            die('There was an error fetching the length of the category table');
-        }
-
-        // Insert at max priority
-        $ins = "INSERT INTO `category` (`name`, `order`, `supercategory`) VALUES (?,?,?)";
-        
-        try {
-            $stmt = $db->prepare($ins);
-            $stmt->execute([$_POST['name'], $len + 1, $sCategory]);
-        }
-        catch (PDOException $e) {
-            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
-            die('There was an error adding a new category');
-        }
-        break;
     case "sCategoryReorder":
         $upd = "UPDATE `supercategory` SET `order` = ? WHERE `id` = ?";
 
@@ -78,6 +52,44 @@ switch ($type) {
             die('There was an error removing data from the database');
         }
 
+        break;
+    case "category": // Add new category
+            // find the max priority from the database
+            $sCategory = $_POST["supercategory"];
+            $get = "SELECT COUNT(`id`) AS `len` FROM `category` WHERE `supercategory` = ?";
+            try {
+                $stmt = $db->prepare($get);
+                $stmt->execute([$sCategory]);
+                $len = $stmt->fetch()['len'];
+            }
+            catch (PDOException $e) {
+                consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+                die('There was an error fetching the length of the category table');
+            }
+    
+            // Insert at max priority
+            $ins = "INSERT INTO `category` (`name`, `order`, `supercategory`) VALUES (?,?,?)";
+            
+            try {
+                $stmt = $db->prepare($ins);
+                $stmt->execute([$_POST['name'], $len + 1, $sCategory]);
+            }
+            catch (PDOException $e) {
+                consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+                die('There was an error adding a new category');
+            }
+            break;
+    case "categoryRemove": // delete a category
+        $rem = "DELETE FROM `category` WHERE `id` = ?"; // All descendant tables should be ON DELETE CASCADE
+        
+        try {
+            $stmt = $db->prepare($rem);
+            $stmt->execute([$_POST['id']]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error removing data from the database');
+        }
         break;
 }
 

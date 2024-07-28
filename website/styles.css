@@ -22,43 +22,65 @@
     overflow: scroll;
     min-height: 87vh;
     height: 87vh;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
-  
+
 .category {
     display: flex;
+    gap: 0.25rem;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     border: 3px solid var(--light-main);
     background-color: var(--bg-lighter);
     color: var(--light-main);
+    border-radius:.5em;
+    padding: 5px;
+    margin: 0;
+    cursor: move;
+    height: fit-content;
+    text-wrap: nowrap;
+    min-width: 18rem;
+}
+
+.category #header {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-darker);
     border-radius: .5em;
     padding: 15px;
     margin: 0;
-    cursor: move;
     height: 2rem;
     text-wrap: nowrap;
+    width: 100%;
+    
 }
 
-.category button {
-    visibility: hidden;
-    display: inline;
-    height: 75%;
+.category #header h3 {
+    margin: 0;
+}
+
+.category #header button {
+    display: none;
     aspect-ratio: 1;
     margin: 0;
-    padding: 0;
-    background-color: var(--bg-darker);
+    padding: 5px;
+    background-color: var(--light-sub);
+    color: var(--bg-darker);
+    font-size: xx-large;
     border-radius: 10%;
-    line-height: normal;
     border: none;
+    line-height: 0px;
+    cursor: pointer;
 }
 
 .category:hover {
     outline: 2px dotted var(--light-main);
 }
 
-.category:hover button {
-    visibility: visible;
+.category #header:hover button {
+    display: inline;
 }
 
 #newCat {
@@ -76,6 +98,24 @@
     box-shadow: none;
     stroke: none;
     border: 0.2rem solid var(--bg-lighter);
+    margin: 0;
+}
+
+#newTask {
+    display: block;
+    height: 1.5rem;
+    aspect-ratio: 1;
+    
+    padding: 0;
+    font-size: 1rem;
+    font-weight: bolder;
+    line-height: 1rem;
+    background-color: var(--light-sub);
+    color: var(--bg-lighter);
+    border-radius: 10%;
+    text-align: center;
+    box-shadow: none;
+    stroke: none;
     margin: 0;
 }
   
