@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function handleDragStart(e) {
       this.style.opacity = '0.4';
 
-      if (this.classList.contains('box')) {
-        dragClass = 'box';
+      if (this.classList.contains('category')) {
+        dragClass = 'category';
       } else if (this.classList.contains('sCategory')) {
         dragClass = 'sCategory';
       }
@@ -71,6 +71,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 xhttp.send(`type=sCategoryReorder&id=${sCategories[i].getAttribute("data-id")}&order=${i+1}`);
               }
               break;
+              case "category":
+                let categories = document.querySelectorAll('.category');
+  
+                for (let i = 0; i < categories.length; i++) {
+                  // If I could be bothered I would have a single xhttp for drag and drop but this is way easier. 
+                  const xhttp = new XMLHttpRequest();
+                  xhttp.open("POST","./ServerFunctions.php")
+                  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                  
+                  xhttp.send(`type=categoryReorder&id=${categories[i].getAttribute("data-id")}&order=${i+1}`);
+                }
+                break;
           }
         }
       }

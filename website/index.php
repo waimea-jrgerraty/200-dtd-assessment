@@ -113,23 +113,23 @@ try {
       <div class="formContent">
         <h3>New Category</h3>
         <form method="POST" action="ServerFunctions.php">
-          <input name="type" type="hidden" value="category">
-          <input name="supercategory" type="hidden" value="<?php echo $catID?>">
+          <input name="type" type="hidden" value="task">
+          <input id="linked" name="category" type="hidden" value="null">
 
           <label>Name</label>
           <input name="name" type="text" required>
 
           <label>Description</label>
-          <textarea class="notebox" name="description" type="text" required>
+          <textarea class="notebox" name="description" type="text" required></textarea>
 
-          <button id="Ccancel" type="reset">Cancel</button>
-          <button id="Csubmit" type="submit">Submit</button>
+          <button id="Tcancel" type="reset">Cancel</button>
+          <button id="Tsubmit" type="submit">Submit</button>
         </form>
       </div>
     </div>
 
     <!-- Main page content -->
-    <div class="container">
+    <div id="container">
       <?php
       // Load the categories under the current category from the url
       foreach ($categories as $cat) {

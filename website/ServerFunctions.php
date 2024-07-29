@@ -91,6 +91,19 @@ switch ($type) {
             die('There was an error removing data from the database');
         }
         break;
+        case "categoryReorder":
+            $upd = "UPDATE `category` SET `order` = ? WHERE `id` = ?";
+    
+            try {
+                $stmt = $db->prepare($upd);
+                $stmt->execute([$_POST['order'],$_POST['id']]);
+            }
+            catch (PDOException $e) {
+                consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+                die('There was an error updating data from the database');
+            }
+    
+            break;
 }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']); ?>

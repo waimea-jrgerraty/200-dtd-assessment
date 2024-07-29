@@ -13,7 +13,7 @@
     --pico-font-family: "Fira-Mono", monospace !important;
 }
 
-.container {
+#container {
     color: black;
     display: flex;
     flex-direction: row;

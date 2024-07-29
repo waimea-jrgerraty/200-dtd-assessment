@@ -48,3 +48,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
         } 
     }
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Task form
+
+    // Get the modal
+    var modal = document.getElementById("taskForm");
+    var modalLink = modal.querySelector("#linked");
+    var quit = document.getElementById("Tcancel");
+    var btnContainer = document.querySelector("#container");
+    
+    btnContainer.addEventListener("click", function(event) {
+        var btn = event.target.closest("#newTask")
+        if (btn) {
+            const id = btn.parentNode.getAttribute("data-id");
+            modalLink.value = id;
+            modal.style.display = "block";
+        }
+    })
+
+    quit.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    } 
+});
