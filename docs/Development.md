@@ -138,6 +138,12 @@ You can now create and remove supercategories.
 
 The form to create a new supercategory has not been given proper styling yet and I will have to add that later. Removing a supercategory will bring up a broswer confirmation window to make sure you do not remove a supercategory on accident.
 
+### 01/08/24
+
+I have got the user interface and functionality close to a position where I can get more feedback from my users. There are still some major issues with reordering tasks bringing the category with them and causing both categories to become translucent ![example](images/taskReorderBug.png)
+
+Since last time I have done the category list and have mostly finished the task list. When categories overflow, they will overflow and the main frame will be scrollable. I realized this would be annoying to navigate with shift scrolling and so decided to make it so you can drag to scroll.
+
 ### DATE HERE
 
 Replace this text with what you are working on
