@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     // Supercategory form
 
     // Get the modal
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     } 
 });
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     // Category form
 
     // Get the modal
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     // Task form
 
     // Get the modal

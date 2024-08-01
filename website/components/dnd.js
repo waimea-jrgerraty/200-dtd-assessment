@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
 
     var dragSrcEl = null;
     var dragClass = null;
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Ask for confirmation
         ClickedDelete = true;
         if (window.confirm("Are you sure you want to delete this task?")) {
-          const id = button.parentNode.getAttribute('data-id');
+          const id = button.parentNode.parentNode.getAttribute('data-id');
           // Send delete action
           const xhttp = new XMLHttpRequest();
           xhttp.open("POST","./ServerFunctions.php")
