@@ -162,12 +162,14 @@
 
 header {
     max-width: 100% !important;
-    max-height: 5% !important;
-    height: 5% !important;
+    max-height: 7vh !important;
+    min-height: 7vh !important;
+    height: 7vh !important;
     background-color: var(--accent);
     padding-bottom: 0 !important;
     padding-top: 0 !important;
     outline: 2px solid var(--light-sub);
+    line-height: normal;
 }
 
 nav {
@@ -183,11 +185,11 @@ main {
 }
 
 .SideNav {
-    height: calc(100% - 8vh);
+    height: 94vh;
     width: 15%;
     position: fixed;
     z-index: 1;
-    top: 8vh;
+    top: calc(7vh + 2px);
     left: 0;
     background-color: var(--bg-lighter);
     overflow-x: 0;

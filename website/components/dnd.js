@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           xhttp.open("POST","./ServerFunctions.php")
           xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-          xhttp.send(`type=tsakRemove&id=${id}`);
+          xhttp.send(`type=taskRemove&id=${id}`);
           item.remove(); //csp
         }
       }

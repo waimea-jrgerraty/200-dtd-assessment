@@ -130,6 +130,18 @@ switch ($type) {
             die('There was an error adding a new category');
         }
         break;
+    case "taskRemove": // delete a category
+        $rem = "DELETE FROM `tasks` WHERE `id` = ?"; // All descendant tables should be ON DELETE CASCADE
+        
+        try {
+            $stmt = $db->prepare($rem);
+            $stmt->execute([$_POST['id']]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error removing data from the database');
+        }
+        break;
 }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']); ?>
