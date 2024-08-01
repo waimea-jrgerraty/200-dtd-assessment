@@ -4,12 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     var dragClass = null;
     
     function handleDragStart(e) {
+      e.stopPropagation();
       this.style.opacity = '0.4';
 
       if (this.classList.contains('category')) {
         dragClass = 'category';
       } else if (this.classList.contains('sCategory')) {
         dragClass = 'sCategory';
+      } else if (this.classList.contains('task')) {
+        dragClass = 'task';
       }
       
       dragSrcEl = this;
@@ -205,9 +208,5 @@ document.addEventListener('DOMContentLoaded', () => {
           item.remove(); //csp
         }
       }
-
-      // Add draggable attribute with value false to the category element
-      const category = item.parentNode;
-      category.setAttribute('draggable', 'false');
     });
   });

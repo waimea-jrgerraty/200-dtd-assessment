@@ -139,7 +139,7 @@
     padding: 5px;
 }
 
-.task div {
+.task #top, .task #bottom {
     display: flex;
     gap: 0.25rem;
     justify-content: space-between;
@@ -147,11 +147,15 @@
     height: 50%;
 }
 
+.task #bottom {
+    align-items: flex-end;
+}
+
 .task button {
     visibility: hidden;
     height: 1rem;
     width: 1rem;
-    margin: 0;
+    margin: 0 0 auto 0;
     padding: 0;
     background-color: var(--light-sub);
     color: var(--bg-darker);
@@ -169,8 +173,18 @@
     color: var(--light-sub);
     background: none;
     border: none;
-    margin-bottom: 0;
-    margin-top: auto
+    margin: 0;
+}
+
+.task #completion {
+    display: block;
+    padding: 0 5px;
+    border: 2px solid var(--light-main);
+    border-radius: 0.25rem;
+    margin: 0;
+    min-width: 3rem;
+    text-align: center;
+    font-size: smaller;
 }
 
 .task:hover {

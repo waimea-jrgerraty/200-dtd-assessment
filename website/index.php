@@ -86,7 +86,7 @@ try {
           <input name="type" type="hidden" value="sCategory">
 
           <label>Name</label>
-          <input name="name" type="text" required>
+          <input name="name" type="text" required autocomplete="off">
 
           <button id="SCcancel" type="reset">Cancel</button>
           <button id="SCsubmit" type="submit">Submit</button>
@@ -102,7 +102,7 @@ try {
           <input name="supercategory" type="hidden" value="<?php echo $catID?>">
 
           <label>Name</label>
-          <input name="name" type="text" required>
+          <input name="name" type="text" required autocomplete="off">
 
           <button id="Ccancel" type="reset">Cancel</button>
           <button id="Csubmit" type="submit">Submit</button>
@@ -118,7 +118,7 @@ try {
           <input id="linked" name="category" type="hidden" value="null">
 
           <label>Name</label>
-          <input name="name" type="text" required>
+          <input name="name" type="text" required autocomplete="off">
 
           <label>Description</label>
           <textarea class="notebox" name="description" type="text" required></textarea>
@@ -165,9 +165,7 @@ try {
                 <input name='submit' type='submit' value='Archive'>
               </form>
               
-              <div id='#completion'>
-                <p>{$task['completion']}</p>
-              </div>
+              <p id='completion'>{$task['completion']}%</p>
             </div>
           </div>";
         }
