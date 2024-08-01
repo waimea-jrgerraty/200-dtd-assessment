@@ -139,6 +139,23 @@ try {
             <button type='button'>-</button>
           </div>";
         // Load the tasks
+        $tasksQuery = 'SELECT * FROM `tasks` WHERE `category` = ? ORDER BY `order` ASC, `name`';
+        
+        try {
+          $stmt = $db->prepare($tasksQuery);
+          $stmt->execute([ $cat['id'] ]);
+          $tasks = $stmt->fetchAll();
+        } catch (PDOException $e) {
+          consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+          die('There was an error getting data from the database');
+        }
+
+        foreach ($tasks as $task) {
+          echo "<div class='task' draggable='true' data-id='{$task['id']}'>
+            <p>{$task['name']}</p>
+            <button type='button'>-</button>
+          </div>";
+        }
 
         // New task button
         if ($catID != 1) {
