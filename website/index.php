@@ -36,6 +36,7 @@ try {
 
   <script src="components/dnd.js"></script>
   <script src="components/modalForm.js"></script>
+  <script src="components/horizontalDrag.js"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
   <link rel="stylesheet" href="styles.css">
@@ -152,8 +153,22 @@ try {
 
         foreach ($tasks as $task) {
           echo "<div class='task' draggable='true' data-id='{$task['id']}'>
-            <p>{$task['name']}</p>
-            <button type='button'>-</button>
+            <div id='top'>
+              <p>{$task['name']}</p>
+              <button type='button'>-</button>
+            </div>
+            
+            <div id='bottom'>
+              <form id='archiveButton' method='POST' action='ServerFunctions.php'>
+                <input name='type' type='hidden' value='archiveTask'>
+                <input name='id' type='hidden' value='{$task['id']}'>
+                <input name='submit' type='submit' value='Archive'>
+              </form>
+              
+              <div id='#completion'>
+                <p>{$task['completion']}</p>
+              </div>
+            </div>
           </div>";
         }
 
