@@ -95,6 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const id = btn.getAttribute("data-id");
 
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("POST","./ServerFunctions.php")
+            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            
+            xhttp.onload = function() {
+                
+            }
+
+            xhttp.send(`type=subtaskBuildMenu&id=${id}`);
 
             modal.style.display = "block";
         }
