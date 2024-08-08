@@ -1,3 +1,7 @@
+var currentModal = null;
+var openSubtask = null;
+var openSubtaskId = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     // Supercategory form
 
@@ -8,18 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.onclick = function() {
         modal.style.display = "block";
+        currentModal = modal;
     }
 
     quit.onclick = function() {
         modal.style.display = "none";
     }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    } 
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,18 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btn != null) {
         btn.onclick = function() {
             modal.style.display = "block";
+            currentModal = modal;
         }
     
         quit.onclick = function() {
             modal.style.display = "none";
         }
-    
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        } 
     }
 });
 
@@ -64,56 +56,114 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = btn.parentNode.getAttribute("data-id");
             modalLink.value = id;
             modal.style.display = "block";
+            currentModal = modal;
         }
     })
 
     quit.onclick = function() {
         modal.style.display = "none";
     }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    } 
 });
+
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Subtask form
+
+    // Get the modal
+    var modal = document.getElementById("subtaskForm");
+    var modalLink = modal.querySelector("#linkedST");
+    var quit = document.getElementById("STcancel");
+    var btnContainer = document.querySelector("#container");
+    
+    btnContainer.addEventListener("click", function() {
+        waitForElm("#newSubtask").then((btn) => {
+            btn.addEventListener("click", function() {
+                modalLink.value = btn.getAttribute("data-id");
+                modal.style.display = "block";
+                currentModal = modal;
+            });
+        });
+    })
+
+    quit.onclick = function() {
+        modal.style.display = "none";
+    }
+});
+
+function openMenu(modal, id) {
+    var modalContent = modal.querySelector(".formContent");
+    // Clear existing children
+    while (modal.firstChild.firstChild) {
+        modal.firstChild.removeChild(modal.firstChild.firstChild);
+    }
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET",`./BuildSubtasks.php?id=${id}`)
+    
+    xhttp.onload = function() {
+        modalContent.innerHTML = this.responseText;
+        
+        const btn = modalContent.querySelector("newSubtask");
+        if (btn) {
+            btn.setAttribute("data-id", id)
+        }
+    }
+
+    xhttp.send();
+
+    modal.style.display = "block";
+    currentModal = modal;
+    openSubtask = modal;
+    openSubtaskId = id;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Subtask menu
 
     // Get the modal
     var modal = document.getElementById("subtaskMenu");
-    var modalContent = modal.querySelector(".formContent");
     var btnContainer = document.querySelector("#container");
     
     btnContainer.addEventListener("click", function(event) {
         var btn = event.target.closest(".task")
         if (btn) {
-            // Clear existing children
-            while (modal.firstChild.firstChild) {
-                modal.firstChild.removeChild(modal.firstChild.firstChild);
-            }
             const id = btn.getAttribute("data-id");
-
-            const xhttp = new XMLHttpRequest();
-            xhttp.open("GET",`./BuildSubtasks.php?id=${id}`)
-            
-            xhttp.onload = function() {
-                modalContent.innerHTML = this.responseText;
-                console.log(this.responseText);
-            }
-
-            xhttp.send();
-
-            modal.style.display = "block";
+            openMenu(modal, id);
         }
     })
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Close windows when clicking outside of the modal
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (currentModal != null & event.target == currentModal) {
+            currentModal.style.display = "none";
+            if (currentModal.id == "subtaskMenu") {
+                openSubtask = null;
+                openSubtaskId = null;
+            }
+            currentModal = openSubtask;
         }
     } 
 });

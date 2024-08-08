@@ -142,6 +142,47 @@ switch ($type) {
             die('There was an error removing data from the database');
         }
         break;
+    case "taskReorder":
+        $upd = "UPDATE `tasks` SET `order` = ?, `category` = ? WHERE `id` = ?";
+
+        try {
+            $stmt = $db->prepare($upd);
+            $stmt->execute([$_POST['order'],$_POST['cat'],$_POST['id']]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error updating data from the database');
+        }
+
+        break;
+    case "subtask": // Add new subtask
+        //TODO
+        // need to handle the image uploads here
+        // find the max priority from the database
+        $category = $_POST["category"];
+        $get = "SELECT COUNT(`id`) AS `len` FROM `tasks` WHERE `category` = ?";
+        try {
+            $stmt = $db->prepare($get);
+            $stmt->execute([$category]);
+            $len = $stmt->fetch()['len'];
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error fetching the length of the category table');
+        }
+
+        // Insert at max priority
+        $ins = "INSERT INTO `tasks` (`name`, `description`, `order`, `category`) VALUES (?,?,?,?)";
+        
+        try {
+            $stmt = $db->prepare($ins);
+            $stmt->execute([$_POST['name'], $_POST['description'], $len + 1, $category]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error adding a new category');
+        }
+        break;
 }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']); ?>

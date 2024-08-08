@@ -54,27 +54,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (dragSrcEl != this) {
+          const newID = this.getAttribute('data-id');
+          const oldID = e.dataTransfer.getData('text/plain');
           dragSrcEl.innerHTML = this.innerHTML;
-          dragSrcEl.setAttribute('data-id', this.getAttribute('data-id'));
+          dragSrcEl.setAttribute('data-id', newID);
           this.innerHTML = e.dataTransfer.getData('text/html');
-          this.setAttribute('data-id', e.dataTransfer.getData('text/plain'));
+          this.setAttribute('data-id', oldID);
           
           // reorder the elements in the database so that they are in the same order when the page reloads.
           // return false;
           switch (dragClass) {
             case "sCategory":
-              let sCategories = document.querySelectorAll('.sCategory');
+                let sCategories = document.querySelectorAll('.sCategory');
 
-              for (let i = 0; i < sCategories.length; i++) {
-                // If I could be bothered I would have a single xhttp for drag and drop but this is way easier. 
-                const xhttp = new XMLHttpRequest();
-                xhttp.open("POST","./ServerFunctions.php")
-                xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                
-                xhttp.send(`type=sCategoryReorder&id=${sCategories[i].getAttribute("data-id")}&order=${i+1}`);
-              }
-              break;
-              case "category":
+                for (let i = 0; i < sCategories.length; i++) {
+                  // If I could be bothered I would have a single xhttp for drag and drop but this is way easier. 
+                  const xhttp = new XMLHttpRequest();
+                  xhttp.open("POST","./ServerFunctions.php")
+                  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                  
+                  xhttp.send(`type=sCategoryReorder&id=${sCategories[i].getAttribute("data-id")}&order=${i+1}`);
+                }
+                break;
+            case "category":
                 let categories = document.querySelectorAll('.category');
   
                 for (let i = 0; i < categories.length; i++) {
@@ -83,6 +85,32 @@ document.addEventListener('DOMContentLoaded', () => {
                   xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                   
                   xhttp.send(`type=categoryReorder&id=${categories[i].getAttribute("data-id")}&order=${i+1}`);
+                }
+                break;
+            case "task":
+                var tasks = this.parentNode.querySelectorAll('.task');
+                var cat = this.parentNode.getAttribute("data-id");
+                
+                for (let i = 0; i < tasks.length; i++) {
+                  const xhttp = new XMLHttpRequest();
+                  xhttp.open("POST","./ServerFunctions.php")
+                  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                  
+                  xhttp.send(`type=taskReorder&id=${tasks[i].getAttribute("data-id")}&order=${i+1}&cat=${cat}`);
+                }
+
+                // Update the one that was moved as well incase the user moves the task to another category
+                if (dragSrcEl.parentNode != this.parentNode) {
+                  tasks = dragSrcEl.parentNode.querySelectorAll('.task');
+                  cat = dragSrcEl.parentNode.getAttribute("data-id");
+                
+                  for (let i = 0; i < tasks.length; i++) {
+                    const xhttp = new XMLHttpRequest();
+                    xhttp.open("POST","./ServerFunctions.php")
+                    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    
+                    xhttp.send(`type=taskReorder&id=${tasks[i].getAttribute("data-id")}&order=${i+1}&cat=${cat}`);
+                  }
                 }
                 break;
           }
@@ -164,10 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Delete button logic here
       const button = item.querySelector('#header button');
-      var ClickedDelete = false;
       button.onclick = function () {
         // Ask for confirmation
-        ClickedDelete = true;
         if (window.confirm("Are you sure you want to delete this category?")) {
           const id = button.parentNode.parentNode.getAttribute('data-id');
           // Send delete action
@@ -192,10 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Delete button logic here
       const button = item.querySelector('button');
-      var ClickedDelete = false;
       button.onclick = function () {
         // Ask for confirmation
-        ClickedDelete = true;
         if (window.confirm("Are you sure you want to delete this task?")) {
           const id = button.parentNode.parentNode.getAttribute('data-id');
           // Send delete action

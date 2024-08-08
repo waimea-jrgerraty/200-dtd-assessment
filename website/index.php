@@ -112,7 +112,7 @@ try {
 
     <div class="formModal" id="taskForm">
       <div class="formContent">
-        <h3>New Category</h3>
+        <h3>New Task</h3>
         <form method="POST" action="ServerFunctions.php">
           <input name="type" type="hidden" value="task">
           <input id="linked" name="category" type="hidden" value="null">
@@ -133,6 +133,32 @@ try {
     <div class="formModal" id="subtaskMenu">
       <div class="formContent">
           
+      </div>
+    </div>
+
+    <div class="formModal" id="subtaskForm">
+      <div class="formContent">
+        <h3>New Subtask</h3>
+        <form method="POST" action="ServerFunctions.php">
+          <input name="type" type="hidden" value="subtask">
+          <input id="linkedST" name="task" type="hidden" value="null">
+
+          <label>Task</label>
+          <textarea class="notebox" name="task" required></textarea>
+
+          <label>Image</label>
+          <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+
+          <label>Deadline</label>
+          <?php
+            $now = new DateTime();
+            $currentTime = substr_replace($now->format('Y-m-dH:i'), "T", 10, 0);
+            echo '<input type="datetime-local" name="deadline" min="'.$currentTime.'">';
+          ?>
+
+          <button id="STcancel" type="reset">Cancel</button>
+          <button id="STsubmit" type="submit">Submit</button>
+        </form>
       </div>
     </div>
 
