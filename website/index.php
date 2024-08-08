@@ -121,7 +121,7 @@ try {
           <input name="name" type="text" required autocomplete="off">
 
           <label>Description</label>
-          <textarea class="notebox" name="description" type="text" required></textarea>
+          <textarea class="notebox" name="description" required></textarea>
 
           <button id="Tcancel" type="reset">Cancel</button>
           <button id="Tsubmit" type="submit">Submit</button>

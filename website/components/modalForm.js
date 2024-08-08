@@ -84,10 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get the modal
     var modal = document.getElementById("subtaskMenu");
+    var modalContent = modal.querySelector(".formContent");
     var btnContainer = document.querySelector("#container");
     
     btnContainer.addEventListener("click", function(event) {
-        var btn = event.target.closest("#.task")
+        var btn = event.target.closest(".task")
         if (btn) {
             // Clear existing children
             while (modal.firstChild.firstChild) {
@@ -96,14 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = btn.getAttribute("data-id");
 
             const xhttp = new XMLHttpRequest();
-            xhttp.open("POST","./ServerFunctions.php")
-            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhttp.open("GET",`./BuildSubtasks.php?id=${id}`)
             
             xhttp.onload = function() {
-                
+                modalContent.innerHTML = this.responseText;
+                console.log(this.responseText);
             }
 
-            xhttp.send(`type=subtaskBuildMenu&id=${id}`);
+            xhttp.send();
 
             modal.style.display = "block";
         }
