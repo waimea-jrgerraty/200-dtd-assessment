@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 let categories = document.querySelectorAll('.category');
   
                 for (let i = 0; i < categories.length; i++) {
-                  // If I could be bothered I would have a single xhttp for drag and drop but this is way easier. 
                   const xhttp = new XMLHttpRequest();
                   xhttp.open("POST","./ServerFunctions.php")
                   xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -78,3 +78,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     } 
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Subtask menu
+
+    // Get the modal
+    var modal = document.getElementById("subtaskMenu");
+    var btnContainer = document.querySelector("#container");
+    
+    btnContainer.addEventListener("click", function(event) {
+        var btn = event.target.closest("#.task")
+        if (btn) {
+            // Clear existing children
+            while (modal.firstChild.firstChild) {
+                modal.firstChild.removeChild(modal.firstChild.firstChild);
+            }
+            const id = btn.getAttribute("data-id");
+
+
+            modal.style.display = "block";
+        }
+    })
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    } 
+});

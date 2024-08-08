@@ -54,31 +54,31 @@ switch ($type) {
 
         break;
     case "category": // Add new category
-            // find the max priority from the database
-            $sCategory = $_POST["supercategory"];
-            $get = "SELECT COUNT(`id`) AS `len` FROM `category` WHERE `supercategory` = ?";
-            try {
-                $stmt = $db->prepare($get);
-                $stmt->execute([$sCategory]);
-                $len = $stmt->fetch()['len'];
-            }
-            catch (PDOException $e) {
-                consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
-                die('There was an error fetching the length of the category table');
-            }
-    
-            // Insert at max priority
-            $ins = "INSERT INTO `category` (`name`, `order`, `supercategory`) VALUES (?,?,?)";
-            
-            try {
-                $stmt = $db->prepare($ins);
-                $stmt->execute([$_POST['name'], $len + 1, $sCategory]);
-            }
-            catch (PDOException $e) {
-                consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
-                die('There was an error adding a new category');
-            }
-            break;
+        // find the max priority from the database
+        $sCategory = $_POST["supercategory"];
+        $get = "SELECT COUNT(`id`) AS `len` FROM `category` WHERE `supercategory` = ?";
+        try {
+            $stmt = $db->prepare($get);
+            $stmt->execute([$sCategory]);
+            $len = $stmt->fetch()['len'];
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error fetching the length of the category table');
+        }
+
+        // Insert at max priority
+        $ins = "INSERT INTO `category` (`name`, `order`, `supercategory`) VALUES (?,?,?)";
+        
+        try {
+            $stmt = $db->prepare($ins);
+            $stmt->execute([$_POST['name'], $len + 1, $sCategory]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error adding a new category');
+        }
+        break;
     case "categoryRemove": // delete a category
         $rem = "DELETE FROM `category` WHERE `id` = ?"; // All descendant tables should be ON DELETE CASCADE
         
@@ -141,6 +141,49 @@ switch ($type) {
             consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
             die('There was an error removing data from the database');
         }
+        break;
+    case "subtaskBuildMenu": // Build the subtask menu for all the subtasks of a task
+        $getTasks = "SELECT `name`, `description` FROM `tasks` WHERE `id` = ?";
+        $getSubtasks = "SELECT * FROM `subtasks` WHERE `linked` = ? ORDER BY `order` ASC `task`";
+        
+        try {
+            $stmt = $db->prepare($getTasks);
+            $stmt->execute($_POST['id']);
+            $task = $stmt->fetch();
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error fetching the length of the supercategory table');
+        }
+        try {
+            $stmt = $db->prepare($getSubtasks);
+            $stmt->execute($_POST['id']);
+            $subtasks = $stmt->fetchAll();
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error fetching the length of the supercategory table');
+        }
+        $desc = nl2br($task['description']);
+        // Build menu content
+        echo "<h3 id='taskName'>{$task['name']}</h3>";
+        echo "<button id='newSubtask'>+</button>";
+        echo "<div id='description' class='textArea'>
+            <p>{$desc}</p>
+        </div>";
+        foreach ($subtasks as $subtask) {
+            $completed = $subtask['completed'];
+            $completedText = ($completed == 1) ? ("Completed") : ("Incompleted");
+            $completionState = "unfinishedSafe"; //TODO state complete if finished and unfinishedUnsafe if almost or already due but not finished
+            echo "<div class='subtask {$completionState}'>";
+            
+            echo "<label>{$completedText}</label>";
+            echo "<input type='checkbox'>";
+            $datetime = isset($subtask['datetime']) ? $subtask['datetime'] : "No due date"; //datetime can be NULL, if so, 
+            echo "<p>" . isset($subtask['datetime']) ? $datetime->format('Y-m-d') : $datetime . "</p>";
+            echo "</div>";
+        }
+        
         break;
 }
 

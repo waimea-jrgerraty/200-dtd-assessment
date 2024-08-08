@@ -129,6 +129,13 @@ try {
       </div>
     </div>
 
+    <!-- Subtask menu modal -->
+    <div class="formModal" id="subtaskMenu">
+      <div class="formContent">
+          
+      </div>
+    </div>
+
     <!-- Main page content -->
     <div id="container">
       <?php
@@ -154,7 +161,7 @@ try {
         foreach ($tasks as $task) {
           echo "<div class='task' draggable='true' data-id='{$task['id']}'>
             <div id='top'>
-              <p>{$task['name']}</p>
+              <p id='name'>{$task['name']}</p>
               <button type='button'>-</button>
             </div>
             

@@ -148,4 +148,10 @@ Since last time I have done the category list and have mostly finished the task 
 
 Replace this text with what you are working on
 
+The subtask menu will inherit the same styling as the modal forms, in order to save time and create a more consistent site. This means the sign will be slightly different.
+
+### DATE HERE
+
+Replace this text with what you are working on
+
 Replace this text with brief notes describing what you worked on, any decisions you made, any changes to designs, etc. Add screenshots / links to other media to illustrate your notes where necessary.
