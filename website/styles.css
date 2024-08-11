@@ -351,5 +351,4 @@ main {
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
-  }
-  
+}

@@ -86,11 +86,14 @@ I should avoid using colour combinations that are hard to differentiate for our 
 
 ### Database Structure
 
-Place a image here that shows the *final design* of your database: tables, fields and relationships.
+![Db schema](images/dbV2.png)
+<!-- Place a image here that shows the *final design* of your database: tables, fields and relationships. -->
 
 ### User Interface Design
 
-Place images here that show your *final design* of your UI: layout, colours, etc.
+![Final figma design](images/finalDesign.png)
+![forms in figma](images/v1.0.0%20form.png)
+<!-- Place images here that show your *final design* of your UI: layout, colours, etc. -->
 
 
 -------------------------------------------------
@@ -99,7 +102,8 @@ Place images here that show your *final design* of your UI: layout, colours, etc
 
 ### Database Structure
 
-Place a image here that shows the *actual database structure* that you implemented: tables, fields and relationships.
+![production schema](images/productionSchema.png)
+<!-- Place a image here that shows the *actual database structure* that you implemented: tables, fields and relationships. -->
 
 ### User Interface Design
 

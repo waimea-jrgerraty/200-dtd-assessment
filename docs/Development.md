@@ -148,7 +148,7 @@ Since last time I have done the category list and have mostly finished the task 
 
 Got some feedback from one of my end users today
 
-Voxsinity was happy with the current state of the website, though noted the Game Development Task Manager header was slightly closer to the top of the nav than the bottom, and asked me to fix it. Voxsinity was also alright with the task dragging and dropping requiring you to create a temporary task if you want to move one into a seperate category, though I will try to come up with a solution for this if I have time.
+Voxsinity was happy with the current state of the website, though noted the Game Development Task Manager header was slightly closer to the top of the nav than the bottom, and asked me to fix it. Voxsinity was also alright with the task dragging and dropping requiring you to create a temporary task if you want to move one into a seperate category, though I will try to come up with a solution for this if I have time. He also told me to focus on making the forms and subtask menu look better, as I explained to him that I had not got around to styling it yet.
 
 ### DATE HERE
 

@@ -159,24 +159,31 @@ switch ($type) {
         //TODO
         // need to handle the image uploads here
         // find the max priority from the database
-        $category = $_POST["category"];
-        $get = "SELECT COUNT(`id`) AS `len` FROM `tasks` WHERE `category` = ?";
-        try {
-            $stmt = $db->prepare($get);
-            $stmt->execute([$category]);
-            $len = $stmt->fetch()['len'];
-        }
-        catch (PDOException $e) {
-            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
-            die('There was an error fetching the length of the category table');
+
+        $imageData = null;
+        $imageType = null;
+        // max 16MB
+        if (array_key_exists("image", $_FILES)) {
+            if ($_FILES["image"]["size"] <= 16777215) { 
+                [
+                    'data' => $imageData,
+                    'type' => $imageType
+                ] = uploadedImageData($_FILES['image']);
+            }
         }
 
         // Insert at max priority
-        $ins = "INSERT INTO `tasks` (`name`, `description`, `order`, `category`) VALUES (?,?,?,?)";
+        $ins = "INSERT INTO `subtask` (`task`, `image_type`, `image_data`, `deadline`, `linked`, `completed`) VALUES (?,?,?,?,?,?)";
         
+        $deadline = isset($_POST['deadline']) ? $_POST['deadline'] : null;
+        print_r($_POST);
+        if ($deadline == null) {
+            print("deadline null");
+        }
+        print($deadline);
         try {
             $stmt = $db->prepare($ins);
-            $stmt->execute([$_POST['name'], $_POST['description'], $len + 1, $category]);
+            $stmt->execute([$_POST['task'], $imageType, $imageData, $deadline, $_POST["linked"], 0]);
         }
         catch (PDOException $e) {
             consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
@@ -185,4 +192,4 @@ switch ($type) {
         break;
 }
 
-header('Location: ' . $_SERVER['HTTP_REFERER']); ?>
+// header('Location: ' . $_SERVER['HTTP_REFERER']); ?>

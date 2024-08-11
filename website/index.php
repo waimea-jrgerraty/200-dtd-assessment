@@ -139,15 +139,15 @@ try {
     <div class="formModal" id="subtaskForm">
       <div class="formContent">
         <h3>New Subtask</h3>
-        <form method="POST" action="ServerFunctions.php">
+        <form method="POST" action="ServerFunctions.php" enctype="multipart/form-data">
           <input name="type" type="hidden" value="subtask">
-          <input id="linkedST" name="task" type="hidden" value="null">
+          <input id="linkedST" name="linked" type="hidden" value="null">
 
           <label>Task</label>
           <textarea class="notebox" name="task" required></textarea>
 
           <label>Image</label>
-          <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+          <input type="file" name="image" accept="image/*" required>
 
           <label>Deadline</label>
           <?php

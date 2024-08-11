@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnContainer.addEventListener("click", function() {
         waitForElm("#newSubtask").then((btn) => {
             btn.addEventListener("click", function() {
+                console.log(btn.getAttribute("data-id"), btn);
                 modalLink.value = btn.getAttribute("data-id");
                 modal.style.display = "block";
                 currentModal = modal;
@@ -111,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function openMenu(modal, id) {
     var modalContent = modal.querySelector(".formContent");
+    
     // Clear existing children
     while (modal.firstChild.firstChild) {
         modal.firstChild.removeChild(modal.firstChild.firstChild);
@@ -122,7 +124,7 @@ function openMenu(modal, id) {
     xhttp.onload = function() {
         modalContent.innerHTML = this.responseText;
         
-        const btn = modalContent.querySelector("newSubtask");
+        const btn = modalContent.querySelector("#newSubtask");
         if (btn) {
             btn.setAttribute("data-id", id)
         }
