@@ -144,11 +144,11 @@ I have got the user interface and functionality close to a position where I can 
 
 Since last time I have done the category list and have mostly finished the task list. When categories overflow, they will overflow and the main frame will be scrollable. I realized this would be annoying to navigate with shift scrolling and so decided to make it so you can drag to scroll.
 
-### DATE HERE
+### 11/08/24
 
-Replace this text with what you are working on
+Got some feedback from one of my end users today
 
-The subtask menu will inherit the same styling as the modal forms, in order to save time and create a more consistent site. This means the sign will be slightly different.
+Voxsinity was happy with the current state of the website, though noted the Game Development Task Manager header was slightly closer to the top of the nav than the bottom, and asked me to fix it. Voxsinity was also alright with the task dragging and dropping requiring you to create a temporary task if you want to move one into a seperate category, though I will try to come up with a solution for this if I have time.
 
 ### DATE HERE
 
