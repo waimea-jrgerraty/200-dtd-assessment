@@ -3,7 +3,7 @@ require_once 'components/utils.php';
 $db = connectToDB();
 
 $getTasks = "SELECT `name`, `description` FROM `tasks` WHERE `id` = ?";
-$getSubtasks = "SELECT * FROM `subtask` WHERE `linked` = ? ORDER BY `id` ASC";
+$getSubtasks = "SELECT `id`, `task`, `image_type`, `deadline`, `completed` FROM `subtask` WHERE `linked` = ? ORDER BY `id` ASC";
 
 try {
     $stmt = $db->prepare($getTasks);
@@ -34,13 +34,27 @@ foreach ($subtasks as $subtask) {
     $completed = $subtask['completed'];
     $completedText = ($completed == 1) ? ("Completed") : ("Incompleted");
     $completionState = "unfinishedSafe"; //TODO state complete if finished and unfinishedUnsafe if almost or already due but not finished
-    echo "<div class='subtask {$completionState}'>";
+    $imageSet = $subtask['image_type'] !== null;
+    $imageState = ($imageSet) ? "ImageSet" : "ImageUnset";
+    echo "<article class='subtask {$completionState} {$imageState}' data-id='{$subtask['id']}'>";
+    $taskName = nl2br($subtask['task']);
+    echo "<div class='textarea'>{$taskName}</div>";
     
     echo "<label>{$completedText}</label>";
     echo "<input type='checkbox'>";
-    $datetime = isset($subtask['datetime']) ? $subtask['datetime'] : "No due date"; //datetime can be NULL, if so, 
-    echo "<p>" . isset($subtask['datetime']) ? $datetime->format('Y-m-d') : $datetime . "</p>";
-    echo "</div>";
+
+    $datetime = ($subtask['deadline'] != null) ? new DateTime($subtask['deadline']) : null;
+    if ($datetime !== null) {
+        echo "<p>" . $datetime->format('Y-m-d') . "</p>";
+    } else {
+        echo "<p>No due date</p>";
+    }
+
+    if ($imageSet) {
+        echo "<img src='loadImage.php?id={$subtask['id']}'>";
+    }
+
+    echo "</article>";
 }
 
 // Strictly for GET requests so a return header wont work here

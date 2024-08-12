@@ -127,7 +127,7 @@ switch ($type) {
         }
         catch (PDOException $e) {
             consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
-            die('There was an error adding a new category');
+            die('There was an error adding a new task');
         }
         break;
     case "taskRemove": // delete a category
@@ -156,14 +156,11 @@ switch ($type) {
 
         break;
     case "subtask": // Add new subtask
-        //TODO
-        // need to handle the image uploads here
-        // find the max priority from the database
-
         $imageData = null;
         $imageType = null;
         // max 16MB
-        if (array_key_exists("image", $_FILES)) {
+        
+        if (array_key_exists("image", $_FILES) && !$_FILES['image']['error']) {
             if ($_FILES["image"]["size"] <= 16777215) { 
                 [
                     'data' => $imageData,
@@ -172,24 +169,19 @@ switch ($type) {
             }
         }
 
-        // Insert at max priority
         $ins = "INSERT INTO `subtask` (`task`, `image_type`, `image_data`, `deadline`, `linked`, `completed`) VALUES (?,?,?,?,?,?)";
         
-        $deadline = isset($_POST['deadline']) ? $_POST['deadline'] : null;
-        print_r($_POST);
-        if ($deadline == null) {
-            print("deadline null");
-        }
-        print($deadline);
+        $deadline = ($_POST["deadline"] === '') ? null : $_POST["deadline"];
+
         try {
             $stmt = $db->prepare($ins);
             $stmt->execute([$_POST['task'], $imageType, $imageData, $deadline, $_POST["linked"], 0]);
         }
         catch (PDOException $e) {
             consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
-            die('There was an error adding a new category');
+            die('There was an error adding a new subtask');
         }
         break;
 }
 
-// header('Location: ' . $_SERVER['HTTP_REFERER']); ?>
+header('Location: ' . $_SERVER['HTTP_REFERER']); ?>

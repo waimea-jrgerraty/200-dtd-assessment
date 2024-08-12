@@ -147,7 +147,7 @@ try {
           <textarea class="notebox" name="task" required></textarea>
 
           <label>Image</label>
-          <input type="file" name="image" accept="image/*" required>
+          <input type="file" name="image" accept="image/*">
 
           <label>Deadline</label>
           <?php
