@@ -37,21 +37,28 @@ foreach ($subtasks as $subtask) {
     $imageSet = $subtask['image_type'] !== null;
     $imageState = ($imageSet) ? "ImageSet" : "ImageUnset";
     echo "<article class='subtask {$completionState} {$imageState}' data-id='{$subtask['id']}'>";
+    echo "<button type='button'>🗙</button>";
+    
+    echo "<div class='subtaskCell'>";
+
     $taskName = nl2br($subtask['task']);
     echo "<div class='textarea'>{$taskName}</div>";
     
     echo "<label>{$completedText}</label>";
-    echo "<input type='checkbox'>";
+    echo "<input type='checkbox'";
 
     $datetime = ($subtask['deadline'] != null) ? new DateTime($subtask['deadline']) : null;
     if ($datetime !== null) {
-        echo "<p>" . $datetime->format('Y-m-d') . "</p>";
+        echo "<p>" . $datetime->format('Y/m/d h:i a') . "</p>";
     } else {
         echo "<p>No due date</p>";
     }
+    echo "</div>";
 
     if ($imageSet) {
+        echo "<div class='subtaskCell'>";
         echo "<img src='loadImage.php?id={$subtask['id']}'>";
+        echo "</div>";
     }
 
     echo "</article>";

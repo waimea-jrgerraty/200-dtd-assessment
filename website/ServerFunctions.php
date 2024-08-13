@@ -182,6 +182,46 @@ switch ($type) {
             die('There was an error adding a new subtask');
         }
         break;
+    case "subtaskDelete":
+        $rem = "DELETE FROM `subtask` WHERE `id` = ?";
+        
+        try {
+            $stmt = $db->prepare($rem);
+            $stmt->execute([$_POST['id']]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error removing data from the database');
+        }
+        break;
+    case "subtaskCompletion":
+        $getVal = "SELECT `completed` FROM `subtask` WHERE id = ?";
+        $upd = "UPDATE `subtask` SET `completed` = ? WHERE id = ?";
+        
+        try {
+            $stmt = $db->prepare($getVal);
+            $stmt->execute([$_POST['id']]);
+            $prev = $stmt->fetch()['completed'];
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error removing data from the database');
+        }
+
+        $newval = ($prev == 1) ? 0 : 1;
+        try {
+            $stmt = $db->prepare($upd);
+            $stmt->execute([$newval, $_POST['id']]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error removing data from the database');
+        }
+
+        // Update the completion status for the parent task
+        $getTasks = "SELECT `completed`";
+
+        break;
 }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']); ?>

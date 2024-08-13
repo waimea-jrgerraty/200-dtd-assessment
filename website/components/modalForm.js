@@ -128,6 +128,36 @@ function openMenu(modal, id) {
         if (btn) {
             btn.setAttribute("data-id", id)
         }
+
+        const deleteButtons = modalContent.querySelectorAll("button");
+        deleteButtons.forEach(function(button) {
+            button.onclick = function() {
+                // Ask the user to confirm the action
+                if (window.confirm("Are you sure you want to delete this subtask?")) {
+                    const id = button.parentNode.getAttribute('data-id');
+                    // Send delete action
+                    const xhttp = new XMLHttpRequest();
+                    xhttp.open("POST","./ServerFunctions.php")
+                    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          
+                    xhttp.send(`type=subtaskRemove&id=${id}`);
+                    button.parentNode.remove(); //csp
+                }
+            }
+        })
+
+        const completionButtons = modalContent.querySelectorAll("input");
+        completionButtons.forEach(function(input) {
+            input.oninput = function() {
+                const id = button.parentNode.getAttribute('data-id');
+                    // Tell server to swap the completion value of this subtask
+                    const xhttp = new XMLHttpRequest();
+                    xhttp.open("POST","./ServerFunctions.php")
+                    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          
+                    xhttp.send(`type=subtaskCompletion&id=${id}`);
+            }
+        })
     }
 
     xhttp.send();
