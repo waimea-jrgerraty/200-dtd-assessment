@@ -129,7 +129,7 @@ function openMenu(modal, id) {
             btn.setAttribute("data-id", id)
         }
 
-        const deleteButtons = modalContent.querySelectorAll("button");
+        const deleteButtons = modalContent.querySelectorAll(".subtaskDelete");
         deleteButtons.forEach(function(button) {
             button.onclick = function() {
                 // Ask the user to confirm the action
@@ -140,7 +140,7 @@ function openMenu(modal, id) {
                     xhttp.open("POST","./ServerFunctions.php")
                     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
           
-                    xhttp.send(`type=subtaskRemove&id=${id}`);
+                    xhttp.send(`type=subtaskDelete&id=${id}`);
                     button.parentNode.remove(); //csp
                 }
             }
@@ -149,13 +149,17 @@ function openMenu(modal, id) {
         const completionButtons = modalContent.querySelectorAll("input");
         completionButtons.forEach(function(input) {
             input.oninput = function() {
-                const id = button.parentNode.getAttribute('data-id');
-                    // Tell server to swap the completion value of this subtask
-                    const xhttp = new XMLHttpRequest();
-                    xhttp.open("POST","./ServerFunctions.php")
-                    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-          
-                    xhttp.send(`type=subtaskCompletion&id=${id}`);
+                const id = input.parentNode.parentNode.getAttribute('data-id');
+                // Tell server to swap the completion value of this subtask
+                const xhttp = new XMLHttpRequest();
+                xhttp.open("POST","./ServerFunctions.php")
+                xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhttp.onload = function() {
+                    console.log(this.response);
+                }
+
+                xhttp.send(`type=subtaskCompletion&id=${id}`);
             }
         })
     }
