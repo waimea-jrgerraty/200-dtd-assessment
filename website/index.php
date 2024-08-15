@@ -49,7 +49,7 @@ try {
         <li class="centeredHeader"><strong>Game Development Task Manager</strong></li>
       </ul>
       <ul>
-        <li><a href="">Alerts</a></li>
+        <!-- <li><a href="">Alerts</a></li> -->
         <li><a href="index.php?id=1">Archive</a></li>
       </ul>
     </nav>
@@ -85,9 +85,11 @@ try {
         <form method="POST" action="ServerFunctions.php">
           <input name="type" type="hidden" value="sCategory">
 
-          <label>Name</label>
-          <input name="name" type="text" required autocomplete="off">
-
+          <div class="formDiv">
+            <label>Supercategory Name<span class="required">*</span></label>
+            <input name="name" type="text" required autocomplete="off">
+          </div>
+          
           <button id="SCcancel" type="reset">Cancel</button>
           <button id="SCsubmit" type="submit">Submit</button>
         </form>
@@ -101,8 +103,11 @@ try {
           <input name="type" type="hidden" value="category">
           <input name="supercategory" type="hidden" value="<?php echo $catID?>">
 
-          <label>Name</label>
-          <input name="name" type="text" required autocomplete="off">
+          <div class="formDiv">
+            <label>Category Name<span class="required">*</span></label>
+            <input name="name" type="text" required autocomplete="off">
+          </div>
+          
 
           <button id="Ccancel" type="reset">Cancel</button>
           <button id="Csubmit" type="submit">Submit</button>
@@ -117,11 +122,15 @@ try {
           <input name="type" type="hidden" value="task">
           <input id="linked" name="category" type="hidden" value="null">
 
-          <label>Name</label>
-          <input name="name" type="text" required autocomplete="off">
+          <div class="formDiv">
+            <label>Task Name<span class="required">*</span></label>
+            <input name="name" type="text" required autocomplete="off">
+          </div>
 
-          <label>Description</label>
-          <textarea class="notebox" name="description" required></textarea>
+          <div class="formDiv">
+            <label>Task Description<span class="required">*</span></label>
+            <textarea class="notebox" name="description" required></textarea>
+          </div>
 
           <button id="Tcancel" type="reset">Cancel</button>
           <button id="Tsubmit" type="submit">Submit</button>
@@ -143,18 +152,24 @@ try {
           <input name="type" type="hidden" value="subtask">
           <input id="linkedST" name="linked" type="hidden" value="null">
 
-          <label>Task</label>
-          <textarea class="notebox" name="task" required></textarea>
+          <div class="formDiv">
+            <label>Task<span class="required">*</span></label>
+            <textarea class="notebox" name="task" required></textarea>
+          </div>
 
-          <label>Image</label>
-          <input type="file" name="image" accept="image/*">
+          <div class="formDiv">
+            <label>Image</label>
+            <input type="file" name="image" accept="image/*">
+          </div>
 
-          <label>Deadline</label>
-          <?php
-            $now = new DateTime();
-            $currentTime = substr_replace($now->format('Y-m-dH:i'), "T", 10, 0);
-            echo '<input type="datetime-local" name="deadline" min="'.$currentTime.'">';
-          ?>
+          <div class="formDiv">
+            <label>Task Deadline</label>
+            <?php
+              $now = new DateTime();
+              $currentTime = substr_replace($now->format('Y-m-dH:i'), "T", 10, 0);
+              echo '<input type="datetime-local" name="deadline" min="'.$currentTime.'">';
+            ?>
+          </div>
 
           <button id="STcancel" type="reset">Cancel</button>
           <button id="STsubmit" type="submit">Submit</button>
@@ -193,7 +208,7 @@ try {
             
             <div id='bottom'>
               <form id='archiveButton' method='POST' action='ServerFunctions.php'>
-                <input name='type' type='hidden' value='archiveTask'>
+                <input name='type' type='hidden' value='taskArchive'>
                 <input name='id' type='hidden' value='{$task['id']}'>
                 <input name='submit' type='submit' value='Archive'>
               </form>

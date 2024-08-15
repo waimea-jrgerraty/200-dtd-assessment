@@ -335,17 +335,117 @@ main {
     overflow: auto; 
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
+    backdrop-filter: blur(10px);
   }
   
 .formContent {
-    background-color: #fefefe;
+    background-color: var(--bg-darker);
     margin: 15% auto; 
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid var(--light-main);
+    border-radius: 1rem;
     width: 80%; 
 
     animation-name: animatetop;
     animation-duration: 0.4s
+}
+
+.formDiv {
+    margin: 15px auto;
+    height: fit-content;
+    padding: 0 0.5rem;
+    background-color: var(--bg-main);
+    border-radius: 0.25rem;
+    padding-bottom: 1px;
+}
+
+.required {
+    float: right;
+    margin-right: 5px;
+    font-weight: bold;
+    color: red;
+}
+
+.formContent label {
+    color: var(--accent);
+    font-size: larger;
+    width: 100%;
+}
+
+.formContent input {
+    background-color: var(--bg-lighter);
+}
+
+.formContent h3 {
+    width: 100%;
+    text-align: center;
+}
+
+.formContent button {
+    width: 49%;
+}
+
+.formContent button[type="submit"] {
+    float: right;    
+}
+
+.textArea {
+    display: block;
+    overflow: auto;
+    height: auto;
+    max-height: 12em;
+
+    margin: 15px auto;
+    height: fit-content;
+    padding: 0 0.5rem;
+    background-color: var(--bg-main);
+    border-radius: 0.25rem;
+    padding-bottom: 1px;
+}
+
+.notebox {
+    display: block;
+    height: 6em;
+    background-color: var(--bg-lighter);
+    overflow: scroll;
+    resize: none;
+}
+
+.subtaskAdd {
+    height: 1em;
+    width: 1em;
+    margin: auto;
+    display: inline;
+    float: right;
+    padding: 0;
+}
+
+#newSubtask {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-lighter);
+    border: 1px solid var(--light-main);
+}
+
+article {
+    max-height: 24em;
+}
+
+.ImageSet img {
+    display: block;
+    object-fit: scale-down;
+    margin: 0 auto;
+}
+/* Subtask layouts */
+/* Image Set */
+.ImageSet .subtaskMain {
+    display: flex;
+    flex-direction: row;
+}
+
+.ImageSet .subtaskCell {
+    width: 49%;
 }
 
 @keyframes animatetop {

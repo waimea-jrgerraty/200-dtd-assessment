@@ -25,8 +25,7 @@ catch (PDOException $e) {
 }
 $desc = nl2br($task['description']);
 // Build menu content
-echo "<h3 id='taskName'>{$task['name']}</h3>";
-echo "<button id='newSubtask'>+</button>";
+echo "<h3 id='taskName'>{$task['name']}<span class='subtaskAdd'><button id='newSubtask'>+</button></span></h3>";
 echo "<div id='description' class='textArea'>
     <p>{$desc}</p>
 </div>";
@@ -39,10 +38,11 @@ foreach ($subtasks as $subtask) {
     echo "<article class='subtask {$completionState} {$imageState}' data-id='{$subtask['id']}'>";
     echo "<button type='button' class='subtaskDelete'>🗙</button>";
     
+    echo "<div class='subtaskMain'>";
     echo "<div class='subtaskCell'>";
 
     $taskName = nl2br($subtask['task']);
-    echo "<div class='textarea'>{$taskName}</div>";
+    echo "<div class='textArea'>{$taskName}</div>";
     
     $completedBool = ($completed == 1) ? "checked='checked'" : '';
     echo "<label>{$completedText}</label>";
@@ -61,6 +61,7 @@ foreach ($subtasks as $subtask) {
         echo "<img src='loadImage.php?id={$subtask['id']}'>";
         echo "</div>";
     }
+    echo "</div>";
 
     echo "</article>";
 }

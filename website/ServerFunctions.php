@@ -1,7 +1,7 @@
 <?php
 require_once 'components/utils.php';
 $db = connectToDB();
-$type = $_POST ? $_POST['type'] : $_REQUEST['type'];
+$type = (isset($_POST['type'])) ? $_POST['type'] : $_REQUEST['type'];
 
 function updateTaskCompletion($id) {
     $get = "SELECT `completed` FROM `subtask` WHERE `linked` = ?";
@@ -191,6 +191,20 @@ switch ($type) {
         }
 
         break;
+    case "taskArchive":
+        $upd = "UPDATE `tasks` SET `category` = 2 WHERE `id` = ?"; // Archive has index 2
+
+        print_r($_POST);
+        try {
+            $stmt = $db->prepare($upd);
+            $stmt->execute([$_POST['id']]);
+        }
+        catch (PDOException $e) {
+            consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
+            die('There was an error updating data from the database');
+        }
+
+        break;
     case "subtask": // Add new subtask
         $imageData = null;
         $imageType = null;
@@ -275,4 +289,4 @@ switch ($type) {
         break;
 }
 
-//header('Location: ' . $_SERVER['HTTP_REFERER']); ?>
+header('Location: ' . $_SERVER['HTTP_REFERER']); ?>
