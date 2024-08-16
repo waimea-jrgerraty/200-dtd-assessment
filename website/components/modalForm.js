@@ -88,6 +88,11 @@ function waitForElm(selector) {
 document.addEventListener('DOMContentLoaded', () => {
     // Subtask form
 
+    // Set the users timezone
+    var timezoneInput = document.getElementById("userTimezone");
+    const timezoneOffset = new Date().getTimezoneOffset();
+    timezoneInput.value = timezoneOffset;
+
     // Get the modal
     var modal = document.getElementById("subtaskForm");
     var modalLink = modal.querySelector("#linkedST");
@@ -107,10 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     quit.onclick = function() {
         modal.style.display = "none";
+        location.reload();
     }
 });
 
 function openMenu(modal, id) {
+    // Opens the subtask menu when clicking on a task
     var modalContent = modal.querySelector(".formContent");
     
     // Clear existing children
@@ -128,6 +135,22 @@ function openMenu(modal, id) {
         if (btn) {
             btn.setAttribute("data-id", id)
         }
+
+        const dateTimes = modalContent.querySelectorAll(".datetimeToConvert");
+        dateTimes.forEach(function(d) {
+            var date = new Date(d.innerHTML);
+            
+            const options = {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            };
+            const formattedDate = date.toLocaleString(undefined, options);
+            d.innerHTML = formattedDate;
+        })
 
         const deleteButtons = modalContent.querySelectorAll(".subtaskDelete");
         deleteButtons.forEach(function(button) {
@@ -148,16 +171,25 @@ function openMenu(modal, id) {
 
         const completionButtons = modalContent.querySelectorAll("input");
         completionButtons.forEach(function(input) {
+            const subtask = input.parentNode.parentNode.parentNode.parentNode
+            const prevClass = subtask.getAttribute('data-uncheckedClass');
+            const label = input.parentNode.querySelector('label');
             input.oninput = function() {
-                const id = input.parentNode.parentNode.getAttribute('data-id');
+                if (input.checked) {
+                    subtask.classList.remove(prevClass);
+                    subtask.classList.add('finished');
+                    label.innerHTML = "Completed";
+                } else {
+                    subtask.classList.remove('finished');
+                    subtask.classList.add(prevClass);
+                    label.innerHTML = "Incompleted";
+                }
+
+                const id = subtask.getAttribute('data-id');
                 // Tell server to swap the completion value of this subtask
                 const xhttp = new XMLHttpRequest();
                 xhttp.open("POST","./ServerFunctions.php")
                 xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-                xhttp.onload = function() {
-                    console.log(this.response);
-                }
 
                 xhttp.send(`type=subtaskCompletion&id=${id}`);
             }
@@ -198,6 +230,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentModal.id == "subtaskMenu") {
                 openSubtask = null;
                 openSubtaskId = null;
+                location.reload();
+            }
+            if (currentModal.id == "subtaskForm") {
+                location.reload();
             }
             currentModal = openSubtask;
         }
