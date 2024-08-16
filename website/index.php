@@ -49,7 +49,7 @@ try {
         <li class="centeredHeader"><strong>Game Development Task Manager</strong></li>
       </ul>
       <ul>
-        <!-- <li><a href="">Alerts</a></li> -->
+        <!-- <li><a href="">Alerts</a></li> scrapped feature -->
         <li><a href="index.php?id=1">Archive</a></li>
       </ul>
     </nav>
@@ -138,7 +138,7 @@ try {
       </div>
     </div>
 
-    <!-- Subtask menu modal -->
+    <!-- Subtask menu modal (gets built in modalForm.js) -->
     <div class="formModal" id="subtaskMenu">
       <div class="formContent">
           
@@ -151,6 +151,7 @@ try {
         <form method="POST" action="ServerFunctions.php" enctype="multipart/form-data">
           <input name="type" type="hidden" value="subtask">
           <input id="linkedST" name="linked" type="hidden" value="null">
+          <input id="userTimezone" name="timezone" type="hidden" value="null">
 
           <div class="formDiv">
             <label>Task<span class="required">*</span></label>
@@ -165,7 +166,8 @@ try {
           <div class="formDiv">
             <label>Task Deadline</label>
             <?php
-              $now = new DateTime();
+            // prevent the deadline from being set before a day from now
+              $now = new DateTime("+1 day");
               $currentTime = substr_replace($now->format('Y-m-dH:i'), "T", 10, 0);
               echo '<input type="datetime-local" name="deadline" min="'.$currentTime.'">';
             ?>
@@ -183,11 +185,11 @@ try {
       // Load the categories under the current category from the url
       foreach ($categories as $cat) {
         echo "<div draggable='true' class='category' data-id='{$cat['id']}'>
-          <div id='header'>
+          <div class='header'>
             <h3>{$cat['name']}</h3>
             <button type='button'>-</button>
           </div>";
-        // Load the tasks
+        // Load the tasks for this category
         $tasksQuery = 'SELECT * FROM `tasks` WHERE `category` = ? ORDER BY `order` ASC, `name`';
         
         try {
@@ -200,20 +202,23 @@ try {
         }
 
         foreach ($tasks as $task) {
+          // Loop through all the tasks in this category and display them
+          $per = round($task['completion']);
+          $comp = ($per == 100) ? "completedTask" : ""; // Makes the percentage boxes border blue when the task is done
           echo "<div class='task' draggable='true' data-id='{$task['id']}'>
-            <div id='top'>
-              <p id='name'>{$task['name']}</p>
+            <div class='top'>
+              <p>{$task['name']}</p>
               <button type='button'>-</button>
             </div>
             
-            <div id='bottom'>
-              <form id='archiveButton' method='POST' action='ServerFunctions.php'>
+            <div class='bottom'>
+              <form class='archiveButton' method='POST' action='ServerFunctions.php'>
                 <input name='type' type='hidden' value='taskArchive'>
                 <input name='id' type='hidden' value='{$task['id']}'>
                 <input name='submit' type='submit' value='Archive'>
               </form>
               
-              <p id='completion'>{$task['completion']}%</p>
+              <p class='completion {$comp}'>{$per}%</p>
             </div>
           </div>";
         }
