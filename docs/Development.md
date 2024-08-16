@@ -146,12 +146,33 @@ Since last time I have done the category list and have mostly finished the task 
 
 ### 11/08/24
 
-Got some feedback from one of my end users today
+Got some feedback from one of my end users today (over voice call, so no actual quotes)
 
 Voxsinity was happy with the current state of the website, though noted the Game Development Task Manager header was slightly closer to the top of the nav than the bottom, and asked me to fix it. Voxsinity was also alright with the task dragging and dropping requiring you to create a temporary task if you want to move one into a seperate category, though I will try to come up with a solution for this if I have time. He also told me to focus on making the forms and subtask menu look better, as I explained to him that I had not got around to styling it yet.
 
-### DATE HERE
+### 16/08/24
 
-Replace this text with what you are working on
+Over the past few days I have gotten the subtasks ironed out, and styled the forms and subtask menu (screenshots below). I decided I was not going to make the alert feature where you could ping people to subtasks, as it was underplanned and now there is not an easy way to implement it. I explained this to AwesomeProXXXX and he agreed that it would be easier to just yell at people in discord to look at a task when needed like we had already been doing. This feature would make more sense if there were accounts for this site, but that wasn't planned for, and alerts aren't really useful enough to redesign my site now.
 
-Replace this text with brief notes describing what you worked on, any decisions you made, any changes to designs, etc. Add screenshots / links to other media to illustrate your notes where necessary.
+Showed my users some screenshots of the current appearance of the form (specifically the subtask form, but they all look the same) and the subtask menu 
+![Subtask form](images/FormExampleWIP.png)
+![Subtask menu](images/SubtaskExampleWIP.png)
+
+I was told by AwesomeProXXXX to make the delete button for subtasks red. He also expressed uncertainty about the datetime picker (specifically the hours and minutes selector) but that is designed by firefox and I can't really do anything about it, on chromium browsers there is a dedicated time picker but on firefox you have to manually input the time part of the datetime.
+
+I made the button red ![red delete buttons](images/RedDeleteButtons.png)
+> "Way better." - AwesomeProXXXX
+
+I also finally got around to fixing the misaligned title.
+![title now vertically aligned](images/CenteredTitle.png)  
+The issue was being caused by the nav not taking up the full height of the header, so i set height to 100% and it fixed it.
+
+I have taken steps to make sure that the html validates using the W3C markup validation service. My website initially had many errors relating to the use of multiple identifiers with the same name. ![validation showing 10 warnings/errors with ids of the same name being used](images/Validation1.png)  
+I opened the subtask form on a task that had multiple subtasks loaded, so that I could validate most parts of my website at once. Most of these were pretty simple fixes.  
+After this my website validated ![Document checking completed. No errors or warnings to show.](images/ValidationDone.png)
+
+I also checked styles.css by pasting it in and there were two errors. ![two property errors](images/CSSValidationError.png)  
+The first one is one I missed that wasn't doing anything, and the second was a error with the font-optical-sizing property, which is a thing for variable fonts such as roboto condensed, I'm not really sure why it's not valid here as auto and none are valid values for it. It didn't really effect the look of the single thing roboto condensed is used for so I just got rid of the property and it fixed the issue. If you validate the css with all warnings on, there will be a ton since this relies on pico css for most of the heavy lifting.
+After fixing those errors, my css validates on the normal report warning level. ![css valid](images/CSSValid.png)
+
+The website is pretty much finished now, though there may be some bugs I haven't found yet.
