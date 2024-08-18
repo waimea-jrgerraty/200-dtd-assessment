@@ -152,16 +152,16 @@ Voxsinity was happy with the current state of the website, though noted the Game
 
 ### 16/08/24
 
-Over the past few days I have gotten the subtasks ironed out, and styled the forms and subtask menu (screenshots below). I decided I was not going to make the alert feature where you could ping people to subtasks, as it was underplanned and now there is not an easy way to implement it. I explained this to AwesomeProXXXX and he agreed that it would be easier to just yell at people in discord to look at a task when needed like we had already been doing. This feature would make more sense if there were accounts for this site, but that wasn't planned for, and alerts aren't really useful enough to redesign my site now.
+Over the past few days I have gotten the subtasks ironed out, and styled the forms and subtask menu (screenshots below). I decided I was not going to make the alert feature where you could ping people to subtasks, as it was underplanned and now there is not an easy way to implement it. I explained this to InconspicuousBotGuy and he agreed that it would be easier to just yell at people in discord to look at a task when needed like we had already been doing. This feature would make more sense if there were accounts for this site, but that wasn't planned for, and alerts aren't really useful enough to redesign my site now.
 
 Showed my users some screenshots of the current appearance of the form (specifically the subtask form, but they all look the same) and the subtask menu 
 ![Subtask form](images/FormExampleWIP.png)
 ![Subtask menu](images/SubtaskExampleWIP.png)
 
-I was told by AwesomeProXXXX to make the delete button for subtasks red. He also expressed uncertainty about the datetime picker (specifically the hours and minutes selector) but that is designed by firefox and I can't really do anything about it, on chromium browsers there is a dedicated time picker but on firefox you have to manually input the time part of the datetime.
+I was told by InconspicuousBotGuy to make the delete button for subtasks red. He also expressed uncertainty about the datetime picker (specifically the hours and minutes selector) but that is designed by firefox and I can't really do anything about it, on chromium browsers there is a dedicated time picker but on firefox you have to manually input the time part of the datetime.
 
 I made the button red ![red delete buttons](images/RedDeleteButtons.png)
-> "Way better." - AwesomeProXXXX
+> "Way better." - InconspicuousBotGuy
 
 I also finally got around to fixing the misaligned title.
 ![title now vertically aligned](images/CenteredTitle.png)  
