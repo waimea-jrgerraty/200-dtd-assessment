@@ -123,6 +123,9 @@ switch ($type) {
         }
         break;
     case "categoryRemove": // delete a category
+        if ($_POST['id'] == 2) {
+            die("Cannot delete archived category");
+        }
         $rem = "DELETE FROM `category` WHERE `id` = ?"; // All descendant tables should be ON DELETE CASCADE
         
         try {
