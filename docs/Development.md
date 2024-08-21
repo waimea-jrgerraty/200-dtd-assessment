@@ -180,40 +180,70 @@ The website is pretty much finished now, though there may be some bugs I haven't
 ### 21/08/24 functionality testing
 Stripping my database clean of the test data, I immediatley found a non critical problem. Deleting all of the supercategories will result in a giant error when opening the website.
 ![](images/bug1.png)
+
 ![](images/bug1workaround.png)
+
 As you can see, you can still create new supercategories here, so this isn't really a problem.
 
 ![](images/bug1extra.png)
+
 When creating a new category in this state, the server errors and nothing permanently bad happens.
+
 ![](images/bug1extraFine.png)
 
 I also noticed right away that the archived category in the archive supercategory is deleteable, which I know would for sure break the entire archive feature. I quickly implemented a server side check to make sure the id of the category being deleted is not 2, which is the id for the archived category. I did not implement a way of removing the delete button from the front end, as im pretty sure this would break other things and is really more effort than it's worth in my opinion.
+
 ![](images/bug2.png)
+
 The feature to stop people from creating new categories and tasks in the archive is working as intended.
 
 Next, I inserted some example supercategories that we might use to organize our work.
+
 ![](images/supCatReorder1.png)
-These are in the order I inserted them as, but what if I decided that I actually want them to be ordered alphabetically. Well I can drag and drop them around in the list and end up with this. ![](images/supCatReorder2.png)
+
+These are in the order I inserted them as, but what if I decided that I actually want them to be ordered alphabetically. Well I can drag and drop them around in the list and end up with this. 
+
+![](images/supCatReorder2.png)
+
 This order stayed after the page was refreshed, which tells me that the supercategory drag and drop functionality is working as expected.
 
 I created some example categories and tasks in the programming section so I could test the reorder here.
+
 ![](images/Category&TaskReorderTest1.png)
-I noticed that it had broken out of nowhere, and after a little digging realised that when I made the html valid, the header id on categories got changed to a class, and this was not updated in dnd.js, so it broke the whole thing. I quickly fixed this problem but I also realised that the last time I pulled from github on a school machine, some of the files weren't properly updated on the school server. I had to move to testing the website on the XAMPP server I have been using to work on this website at home. With that dealt with, lets say I dont like the order those two categories are in. I am able to click and drag the category over the other category to switch their positions, which now makes the systems category appear before the visuals category. ![](images/CatReorder.png)
+
+I noticed that it had broken out of nowhere, and after a little digging realised that when I made the html valid, the header id on categories got changed to a class, and this was not updated in dnd.js, so it broke the whole thing. I quickly fixed this problem but I also realised that the last time I pulled from github on a school machine, some of the files weren't properly updated on the school server. I had to move to testing the website on the XAMPP server I have been using to work on this website at home. With that dealt with, lets say I dont like the order those two categories are in. I am able to click and drag the category over the other category to switch their positions, which now makes the systems category appear before the visuals category. 
+
+![](images/CatReorder.png)
 
 This also saved upon refreshing.
-Something that I did notice here was how buggy the task reorder was, especially when you mix moving the categories around in as well. This meant you constantly had to refresh the page to properly use this feautre, which isn't great. Some specific major problems with the task reorder I encountered was flat out not being able to reorder them at all after moving the category they were in, as it would try to drag the category instead of the task. There was also this issue where after dragging a category, then dragging a task within that category into another category would result in the other category retaining the ghost effect ![](images/GhostCategoryBug.png). Another thing that wasn't technically a bug was that it was very frustrating to move a task into another category, when you dont want to swap it with the one it lands on. This meant you had to create a new temporary task in the other category, and swap it with the one you want to move, then delete the temp one. This is obviously not great, but at this point all I can realistically do is be happy it even partially works.
+Something that I did notice here was how buggy the task reorder was, especially when you mix moving the categories around in as well. This meant you constantly had to refresh the page to properly use this feautre, which isn't great. Some specific major problems with the task reorder I encountered was flat out not being able to reorder them at all after moving the category they were in, as it would try to drag the category instead of the task. There was also this issue where after dragging a category, then dragging a task within that category into another category would result in the other category retaining the ghost effect.
+
+![](images/GhostCategoryBug.png) 
+
+Another thing that wasn't technically a bug was that it was very frustrating to move a task into another category, when you dont want to swap it with the one it lands on. This meant you had to create a new temporary task in the other category, and swap it with the one you want to move, then delete the temp one. This is obviously not great, but at this point all I can realistically do is be happy it even partially works.
 
 ![](images/SubtaskImageTest1.png)
+
 Here I am testing the subtask image feature, with a GIF file. The file is 14kb, and the theoretical max for the database is 16mb. This is being tested on both the school server and my XAMPP server, as my XAMPP server has issues with large packets and its better to test this with the production environment. I'm unsure if the server functions were also not pushed to the school server, or the school server also doesn't like the larger packets, because after quite a while, it kicked me out of the subtask menu and didn't actually add the image. On my XAMPP server I ran into `General error: 2006 MySQL server has gone away`, and I don't really know how to mess with the mysql or php configs.
 
 ![](images/subtaskImageSuccess.png)
+
 After trying the smaller 10kb jpeg fish, it successfully added it to the database and can load it on the website. While I still don't know for a fact if the full mediumblob could be used on the school server, I at least know that the image handling works. I know this isn't just an issue with GIF files, as I was able to save them before while implementing the image system, and after that while messing with the style sheets.
 
 ![](images/FullSubtaskDemo.png)
+
 I added some more subtasks to demonstrate the dynamic styling depending on the size of the text and if there is an image, though, now I need to see if I can complete these subtasks, as the task tells me that it is 0% done.
+
 ![](images/CompletionTest1.png)
+
+
 As you can see, I marked one of these as done, and it came up with the blue completed border.
 ![](images/CompletionTest2.png)
+
 And the completion number has updated, telling me a third of the tasks are done.
 
-While testing the delete button for supercategories, categories, tasks and subtasks, I found that all could be deleted, though it would load the subtask menu for the task you just deleted. This completely worked and the old subtasks would be displayed until you closed it as well. Sometimes this would generate an error ![](images/deletedTaskBug.png) but once again it wasn't critical and you could just close the menu and pretend that never happened.
+While testing the delete button for supercategories, categories, tasks and subtasks, I found that all could be deleted, though it would load the subtask menu for the task you just deleted. This completely worked and the old subtasks would be displayed until you closed it as well. Sometimes this would generate an error.
+
+![](images/deletedTaskBug.png) 
+
+Once again it wasn't critical and you could just close the menu and pretend that never happened.
