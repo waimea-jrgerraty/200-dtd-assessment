@@ -107,7 +107,21 @@ I should avoid using colour combinations that are hard to differentiate for our 
 
 ### User Interface Design
 
-Place screenshots and notes here that show your *actual system UI* in action.
+![](images/Main.png)
+Not shown here is tasks that are fully completed have a blue border, and the percentage reflects the percentage of subtasks within that are completed.
+
+![](images/Supercategory.png)
+
+![](images/Category.png)
+
+![](images/Task.png)
+
+![](images/Subtask.png)
+Chromium browsers have a time selector for the datetime picker, while other on other browsers you have to input the hours and minutes manually
+
+![](images/CompletionTest1.png)
+Not shown here are tasks that are nearly due will show a red border and due date text
+<!-- Place screenshots and notes here that show your *actual system UI* in action. -->
 
 
 -------------------------------------------------
@@ -116,20 +130,32 @@ Place screenshots and notes here that show your *actual system UI* in action.
 
 ### Meeting the Needs of the Users
 
-Replace this text with a brief evaluation of how well you met the needs of your users. Look at what you initially wrote about who they are, what specific needs they have, etc. and discuss how well the system meets those needs.
+This was by all metrics, an ambitious project. Not every end user goal was met, but most were to an extent I am happy with. My end users were the people in my studio, and the problem I set out to adress with this project was to improve communication between us. Another of my end user requirements at the start was to include korean translations, though the member of our team who speaks Korean has not been active for quite some time. Seeing as the only things I could provide translations for would be the some of the user interface things (for example, Archive, Supercategories, New Task, ect) I decided to drop this feature. Apart from that, the site is able to suit the needs of my end users, allowing us to organize tasks effectivley.
 
 ### Meeting the System Requirements
 
-Replace this text with a brief evaluation of how well you met the requirements that you defined at the start of the project, etc. Look back at the list of features / functionality you initially set and discuss how well your system has implemented each one.
+All features apart from korean translations and the alert system were implmented into the final product. The alert system was canned because it was unplanned and I realised it would not be as useful as I thought while designing the feature at the start of this project. The drag and drop system worked really well for the supercategories and categories, but not the best for categories. If I did this again, I would try and do something similar to trello where instead of switching the dragged element with the element you drop onto, trello inserts the dragged element next to the element you drop onto. My end users also asked me to add subtask reordering, and checklist subtasks, however a combination of me deciding those wouldn't really make sense and then forgetting about this feature request until the 21st of august led this to not getting done. Subtasks were supposed to effectivley be checklists, and while reordering them would have been a nice feature, I think it works well enough like this.
 
-### Review of IMPLICATION NAME HERE
+### Review of Functionality
 
-Replace this text with brief notes showing how the implication was addressed in the final outcome. Accompany the notes with screenshots / other media to illustrate specific features.
+While the site has more bugs than I would like, I would argue it is still functional enough to be useable. The only major bugs that did not get corrected were the buggy task reordering, which is not something you have to do all the time, and you can work around it fine by refreshing. The rest of the functionality was addressed in the [development log](Development.md#210824-functionality-testing)
 
-### Review of IMPLICATION NAME HERE
+### Review of Accessibility
 
-Replace this text with brief notes showing how the implication was addressed in the final outcome. Accompany the notes with screenshots / other media to illustrate specific features.
+Accessibility was addressed by designing the website with low vision in mind, as well as [asking my colourblind end user for feedback](Development.md#color-palette-suggestions). There we decided to make the green success accent into the main blue accent, as it is easier for him to make out from the red negative accent.
 
-### Review of IMPLICATION NAME HERE
+### Review of Usability
 
-Replace this text with brief notes showing how the implication was addressed in the final outcome. Accompany the notes with screenshots / other media to illustrate specific features.
+Many features were included to follow Neilsen's usability heuristics. For example there are many minimalist techniques used to communicate information in a non-intrusive manner, such as showing a blue border around the percentage box on completed tasks. This is relevant to both asthetics and minimalist design and recognition rather than recall, as the blue accent is more recognisable as the 100%
+
+![](images/completed.png)
+
+This blue border makes it easier to recognize that the task is done, without having to read the 100% over every task, which can become overwhelming on pages with many tasks and categories. This lets you unconsciously filter out the completed tasks when searching for a specific one.
+
+This technique is also used for the borders of subtasks, to draw the user to subtasks that are soon due and away from subtasks they have completed already.
+
+![](images/Deadline.png)
+
+User control and freedom was also a addressed with this site, the user is prompted with a popup before deleting anything to make sure it wasn't accidental, and they can cancel the action.
+
+![](images/popup.png)
