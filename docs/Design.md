@@ -103,6 +103,8 @@ I should avoid using colour combinations that are hard to differentiate for our 
 ### Database Structure
 
 ![production schema](images/productionSchema.png)
+
+Further documentation for the database can be found in the [Database.md](database/Database.md) file.
 <!-- Place a image here that shows the *actual database structure* that you implemented: tables, fields and relationships. -->
 
 ### User Interface Design
@@ -138,7 +140,8 @@ All features apart from korean translations and the alert system were implmented
 
 ### Review of Functionality
 
-While the site has more bugs than I would like, I would argue it is still functional enough to be useable. The only major bugs that did not get corrected were the buggy task reordering, which is not something you have to do all the time, and you can work around it fine by refreshing. The rest of the functionality was addressed in the [development log](Development.md#210824-functionality-testing)
+While the site has more bugs than I would like, I would argue it is still functional enough to be useable. The only major bugs that did not get corrected were the buggy task reordering, which is not something you have to do all the time, and you can work around it fine by refreshing. The rest of the functionality was addressed in the [development log](Development.md#210824-functionality-testing) (24/08/24 functionality testing section)
+Voxsinity also asked for some kind of markdown or rich text support for the task descriptions and subtasks, though 
 
 ### Review of Accessibility
 
@@ -159,3 +162,16 @@ This technique is also used for the borders of subtasks, to draw the user to sub
 User control and freedom was also a addressed with this site, the user is prompted with a popup before deleting anything to make sure it wasn't accidental, and they can cancel the action.
 
 ![](images/popup.png)
+
+## Review of Asthetics
+
+A great deal of effort was put into making the website look nice. Most of the improvements made between me and my end users were to do with the look of the site, such as settling for the blue accent [here](Development.md#color-palette-suggestions). Lots of the [early development](Development.md#270624) was done on getting the left side supercategory selector to work, as I believe it was one of the most important asthetic elements of the website, and I had to get the layout somewhat how I wanted it to test the javascript heavy elements, like the drag and drop. 
+
+## Review of Accessibility
+
+To meet the Accessibilty implications, I set out for with this project by negociating with my end user with colour blindness to make the website more user friendly to him [here](Development.md#color-palette-suggestions)
+
+![](images/Deadline.png)
+This is where I addressed the color blindness issue in my final product, by making the completed accent the blue site accent, instead of green, which is hard for him to tell apart from red.
+
+I can also say that the website is decently readable to me without my glasses on, and feels perfect with them on. The way this was achieved was by using large text where possible. The monospace font for the user interface makes it easy to read. The sans serrif font used throughout tasks is a little harder to read but

@@ -161,7 +161,7 @@ try {
           <div class="formDiv">
             <label>Image</label>
             <input type="file" name="image" accept="image/*">
-          </div>
+        </div>
 
           <div class="formDiv">
             <label>Task Deadline</label>

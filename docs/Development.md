@@ -220,3 +220,12 @@ While testing the delete button for supercategories, categories, tasks and subta
 
 ![](images/ResolutionTest.png)
 I tested the site at different aspect ratios as well, and found that its fine on most resolutions, though when the site becomes thin enough, the supercategory names will overflow into the rest of the website. This is unlikely to happen on any of the devices my users will be using. The only real problem with the interface that can happen is the supercategories label wrapping like it is there.
+
+## 2/09/2024
+Changes should have been pushed from the github to the school server now.
+
+I implemented rudimentary support for rich text in task descriptions and subtasks.
+
+![](images/Richtext.png)
+
+You can write in any html in there and it will work, this could be exploited easily but I trust my end users.

@@ -167,9 +167,11 @@ switch ($type) {
         // Insert at max priority
         $ins = "INSERT INTO `tasks` (`name`, `description`, `order`, `category`) VALUES (?,?,?,?)";
         
+        $desc = htmlspecialchars(nl2br($_POST['description']));
+
         try {
             $stmt = $db->prepare($ins);
-            $stmt->execute([$_POST['name'], $_POST['description'], $len + 1, $category]);
+            $stmt->execute([$_POST['name'], $desc, $len + 1, $category]);
         }
         catch (PDOException $e) {
             consoleLog($e->getMessage(), 'DB List Fetch', ERROR);
@@ -261,10 +263,11 @@ switch ($type) {
             $deadline = $deadline->format('Y-m-d H:i:s');
         }
 
+        $subtaskTask = htmlspecialchars(nl2br($_POST['task']));
         // Save the subtask to the database
         try {
             $stmt = $db->prepare($ins);
-            $stmt->execute([$_POST['task'], $imageType, $imageData, $deadline, $_POST["linked"], 0]);
+            $stmt->execute([$subtaskTask, $imageType, $imageData, $deadline, $_POST["linked"], 0]);
         }
         catch (PDOException $e) {
             consoleLog($e->getMessage(), 'DB List Fetch', ERROR);

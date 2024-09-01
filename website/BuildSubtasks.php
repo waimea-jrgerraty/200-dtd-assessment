@@ -31,7 +31,7 @@ catch (PDOException $e) {
     die('There was an error fetching the length of the supercategory table');
 }
 // Turns all instances of \n into <br/> tags
-$desc = nl2br($task['description']);
+$desc = htmlspecialchars_decode($task['description']);
 // Build menu content
 // Task name and description
 echo "<h3 id='taskName'>{$task['name']}<span class='subtaskAdd'><button id='newSubtask'>+</button></span></h3>";
@@ -70,7 +70,7 @@ foreach ($subtasks as $subtask) {
     // Create a cell so we can have the image on the right and squish the text down if its present
     echo "<div class='subtaskCell'>";
 
-    $taskName = nl2br($subtask['task']);
+    $taskName = htmlspecialchars_decode($subtask['task']);
     echo "<div class='textArea'>{$taskName}</div>";
     
     echo "<div class='subtaskTaskInfo'>";
